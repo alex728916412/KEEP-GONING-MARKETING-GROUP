@@ -15,11 +15,45 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans
 a { text-decoration:none; color:inherit; }
 
 /* NAVBAR */
-header { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(8px); border-bottom:1px solid #e5e7eb; z-index:1000;}
-.nav { max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:16px 24px;}
-.logo { font-weight:700; font-size:1.2rem; }
-.nav a { margin-left:24px; font-weight:500; color:#334155; transition:color 0.3s; }
-.nav a:hover { color:var(--accent); }
+header { 
+  position:fixed; 
+  top:0; 
+  width:100%; 
+  background:rgba(255,255,255,0.95); 
+  backdrop-filter:blur(8px); 
+  border-bottom:1px solid #e5e7eb; 
+  z-index:1000;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: 700;
+  color: #0f172a;
+}
+.nav a { 
+  margin-left:24px; 
+  font-weight:500; 
+  color:#334155; 
+  transition:color 0.3s;
+ }
+.nav a:hover { 
+  color:var(--accent);
+ }
+
+ .nav {
+  position: relative;
+}
+
 
 /* team-page */
 
@@ -334,10 +368,9 @@ footer { padding:40px 24px; background:#0f172a; color:#94a3b8; text-align:center
   color: #e5e7eb;
 }
 
-/* ===== 漢堡式 navbar ===== */
-/* ===== Navbar 基本 ===== */
+/* ===== Navbar ===== */
 header {
-  background: #0f172a;
+  background: rgba(255,255,255,0.95);
 }
 
 .nav {
@@ -347,72 +380,65 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logo {
-  color: white;
+  text-decoration: none;
   font-weight: 700;
-  text-decoration: none;
-  font-size: 1.1rem;
+  color: #0f172a;
 }
 
-/* ===== 導覽連結 ===== */
-.nav-links {
-  display: flex;
-  gap: 24px;
-}
-
-.nav-links a {
-  color: #e5e7eb;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-.nav-links a:hover {
-  color: #38bdf8;
-}
-
-/* ===== 漢堡按鈕 ===== */
+/* ===== 漢堡（無動畫、無懸浮） ===== */
 .hamburger {
-  display: none;
+  all: unset;               /* 清除預設樣式 */
+  width: 32px;
+  height: 24px;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 28px;
-  height: 20px;
-  background: none;
-  border: none;
   cursor: pointer;
+
+  background-color:rgba(255,255,255,0.95); /* 給漢堡按鈕底色 */
+  border-radius: 4px;        /* 可選，讓底色有圓角 */
+  padding: 4px;              /* 給點擊區域留空間 */
+  box-shadow: none !important; /* 關掉陰影 */
+  outline: none !important;    /* 關掉 focus 邊框 */
 }
 
 .hamburger span {
+  width: 100%;
   height: 3px;
-  background: white;
+  background-color: #0f172a; /* 深色，白底可見 */
   border-radius: 2px;
 }
 
-/* ===== 手機版 ===== */
-@media (max-width: 768px) {
-
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 24px;
-    background: #020617;
-    flex-direction: column;
-    gap: 16px;
-    padding: 24px;
-    border-radius: 16px;
-    width: 220px;
-
-    /* 關鍵 */
-    display: none;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
+/* ===== 選單（預設隱藏） ===== */
+.nav-links {
+  display: none;
+  position: absolute;
+  top: 72px;
+  right: 24px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  flex-direction: column;
+  gap: 16px;
+  min-width: 220px;
 }
+
+.nav-links a {
+  text-decoration: none;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+/* ===== 開啟狀態 ===== */
+.nav-links.active {
+  display: flex;
+}
+
+
+
+

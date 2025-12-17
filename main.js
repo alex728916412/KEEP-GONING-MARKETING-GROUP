@@ -1,13 +1,18 @@
 // 表單送出提示
 // 表單送出提示
-const form = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
 
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-    formMessage.textContent = "您的訊息已送出，我們會盡快與您聯絡！";
-    form.reset();
+    if(form && formMessage){
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+            formMessage.textContent = "您的訊息已送出，我們會盡快與您聯絡！";
+            form.reset();
+        });
+    }
 });
+
 
 function goTeamZone() {
   const isLogin = localStorage.getItem("auth") === "true";
@@ -44,9 +49,35 @@ function goTeamZone() {
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+if (hamburger && navLinks) {
+    hamburger.addEventListener("click", function(){
+        navLinks.classList.toggle("active");
+    });
+}
+
+// 登出功能
+document.addEventListener("DOMContentLoaded", function() {
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if(logoutBtn){
+        // 根據登入狀態決定是否顯示
+        if(localStorage.getItem("auth") === "true"){
+            logoutBtn.style.display = "inline-block";
+        } else {
+            logoutBtn.style.display = "none";
+        }
+
+        // 登出功能
+        logoutBtn.addEventListener("click", function(){
+            localStorage.removeItem("auth");       // 移除登入狀態
+            logoutBtn.style.display = "none";      // 登出後隱藏按鈕
+            window.location.href = "index.html";   // 導回首頁
+        });
+    }
 });
+
+
+
 
 
 
