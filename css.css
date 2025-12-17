@@ -335,39 +335,44 @@ footer { padding:40px 24px; background:#0f172a; color:#94a3b8; text-align:center
 }
 
 /* ===== 漢堡式 navbar ===== */
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
+/* ===== Navbar 基本 ===== */
+header {
   background: #0f172a;
-  position: relative;
 }
 
-.nav-container .logo {
-  color: #ffffff;
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: white;
   font-weight: 700;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
+/* ===== 導覽連結 ===== */
 .nav-links {
   display: flex;
   gap: 24px;
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: #e5e7eb;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
+  font-size: 0.95rem;
 }
 
 .nav-links a:hover {
-  color: #22d3ee;
+  color: #38bdf8;
 }
 
-/* 漢堡按鈕 */
+/* ===== 漢堡按鈕 ===== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -380,31 +385,34 @@ footer { padding:40px 24px; background:#0f172a; color:#94a3b8; text-align:center
 }
 
 .hamburger span {
-  display: block;
   height: 3px;
-  background: #ffffff;
+  background: white;
   border-radius: 2px;
 }
 
-/* 響應式 - 小螢幕 */
-@media (max-width: 1024px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    flex-direction: column;
-    background: #1e293b;
-    width: 200px;
-    padding: 16px;
-    border-radius: 8px;
-  }
+/* ===== 手機版 ===== */
+@media (max-width: 768px) {
 
-  .nav-links.show {
+  .hamburger {
     display: flex;
   }
 
-  .hamburger {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 24px;
+    background: #020617;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 16px;
+    width: 220px;
+
+    /* 關鍵 */
+    display: none;
+  }
+
+  .nav-links.active {
     display: flex;
   }
 }

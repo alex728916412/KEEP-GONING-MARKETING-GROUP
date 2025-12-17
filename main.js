@@ -41,11 +41,12 @@ function goTeamZone() {
 }
 
 // 漢堡選單切換
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 });
+
 
 
