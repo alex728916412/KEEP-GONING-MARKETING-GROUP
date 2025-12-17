@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<script>
+if (localStorage.getItem("auth") !== "true") {
+  window.location.href = "login.html";
+}
+</script>
+
+
 <header>
   <div class="nav">
     <a class="logo" href="index.html">KEEP GOING Marketing Group</a>
@@ -23,38 +30,14 @@
       <a href="index.html#trust">回饋</a>
       <a href="index.html#contact">聯絡</a>
       <a href="https://tw.shop.com" target="_blank" rel="noopener noreferrer">前往商城</a>
-       <a href="group.html" onclick="goTeamZone()">團隊專區 </a>
+       <a href="#" onclick="goTeamZone()">團隊專區 </a>
     </nav>
   </div>
 </header>
 
+
+
 <main>
-<section class="hero">
-    <div class="hero-content">
-  <span class="hero-subtitle">專業策略・長期成長</span>
-  <h1>打造品牌成長引擎</h1>
-  <p>我們結合一對一行銷、網站架設與聯盟行銷</p>
-  <p>讓品牌持續擴張，增加信任感。</p>
-  <a class="cta" href="#contact">預約策略諮詢</a>
-    </div>
-</section>
-
-<section id="services" class="section-bg">
-  <div class="container">
-    <h2 class="section-title">核心行銷服務</h2>
-    <p class="section-subtitle">以策略為本，而非只做曝光</p>
-    <div class="grid">
-      <div class="card"><h3>一對一行銷</h3><p>量身打造專屬成長策略。</p></div>
-      <div class="card"><h3>網站行銷</h3><p>SEO與品牌信任度優化。</p></div>
-      <div class="card"><h3>代理行銷</h3><p>建立可複製、可擴張的銷售模式。</p></div>
-      <div class="card"><h3>聯盟行銷</h3><p>打造長期被動流量系統。</p></div>
-      <div class="card"><h3>架站服務</h3><p>高信任感企業級網站。</p></div>
-      <div class="card"><h3>社群與目錄行銷</h3><p>從內容到曝光，建立穩定客源。</p></div>
-    </div>
-  </div>
-</section>
-
-
 <div class="section-header">
   <h2>真實顧客回饋</h2>
   <p class="section-desc">
@@ -91,21 +74,6 @@
   </div>
 </section>
 
-
-<section id="contact" class="section-bg-alt">
-  <div class="container">
-    <h2 class="section-title">開始合作</h2>
-    <p class="section-subtitle">讓策略，而不是運氣，帶你前進</p>
-    <form id="contactForm">
-      <input id="name" required placeholder="姓名" />
-      <input id="email" type="email" required placeholder="Email" />
-      <textarea id="message" rows="4" placeholder="簡述您的需求"></textarea>
-      <button type="submit">送出諮詢</button>
-      <p id="formMessage"></p>
-    </form>
-  </div>
-</section>
-</main>
 
 <footer>
   © 2025 Strategic Marketing Group ｜ 專業行銷顧問團隊
