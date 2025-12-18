@@ -8,38 +8,72 @@ html {
   scroll-behavior: smooth;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
 
 /* 基本樣式 */
 * { box-sizing: border-box; margin:0; padding:0; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; background:#f9f9f9; color:var(--primary); line-height:1.6; padding-top:72px; }
-a { text-decoration:none; color:inherit; }
+body { 
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif; 
+  background:#f9f9f9; 
+  color:var(--primary); 
+  line-height:1.6; 
+  padding-top:72px; 
+  margin: 8px;
+}
+
+a { 
+    text-decoration:none; 
+    color:inherit; 
+}
 
 /* NAVBAR */
-header { 
-  position:fixed; 
-  top:0; 
-  width:100%; 
-  background:rgba(255,255,255,0.95); 
-  backdrop-filter:blur(8px); 
-  border-bottom:1px solid #e5e7eb; 
-  z-index:1000;
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
+
 
 .nav {
   max-width: 1200px;
-  margin: auto;
-  padding: 16px 24px;
+  margin: 0 auto;
+  height: 72px;               /* 🔥 鎖死高度 */
+  padding: 0 24px;
   display: flex;
-  align-items: center;
+  align-items: center;        /* 垂直真正置中 */
   justify-content: space-between;
-  position: relative;
 }
 
+
+
 .logo {
-  text-decoration: none;
   font-weight: 700;
   color: #0f172a;
+  text-decoration: none;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  height: 40px;     /* 🔥 跟右邊選單一致 */
 }
+
+
 .nav a { 
   margin-left:24px; 
   font-weight:500; 
@@ -54,6 +88,23 @@ header {
   position: relative;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-links a {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  text-decoration: none;
+}
+
+
 
 /* team-page */
 
@@ -65,13 +116,15 @@ header {
 
 /* HERO */
 .hero {
-  padding: 80px 24px;
+  padding: 120px 24px 160px;
   min-height: 60vh;
   background: linear-gradient(135deg, #0f172a, #1e293b);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-top: 80px;
+  margin-top: 0;
 }
 
 .hero p{
@@ -368,6 +421,21 @@ footer { padding:40px 24px; background:#0f172a; color:#94a3b8; text-align:center
   color: #e5e7eb;
 }
 
+/* 登出 */
+.logout-btn {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #22d3ee;
+  color: white;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  border: none;
+  line-height: 1;
+}
+
+
 /* ===== Navbar ===== */
 header {
   background: rgba(255,255,255,0.95);
@@ -441,4 +509,82 @@ header {
 
 
 
+/* 響應式設計 */
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    gap: 24px;
+  }
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* 平板 */
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 桌電 */
+@media (min-width: 1440px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .nav-links {
+    display: flex ;
+  }
+
+  .hamburger {
+    display: none; /* 強制顯示漢堡 */
+  }
+}
+
+/* 字體響應式調整 */
+h1 {
+  font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.6rem;
+  }
+}
+
+/* 間距響應式調整 */
+section {
+  padding: 64px 20px;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 96px 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding: 120px 60px;
+  }
+}
 
