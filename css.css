@@ -540,7 +540,7 @@ header {
 }
 
 /* 桌電 */
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -587,4 +587,65 @@ section {
     padding: 120px 60px;
   }
 }
+
+/* =========================
+   Navbar RWD（唯一版本）
+========================= */
+
+/* 預設：桌機 */
+.nav-links {
+  display: flex;
+}
+
+.hamburger {
+  display: none;
+}
+
+/* 半頁 / 平板 / 手機 */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+    position: absolute;     /* ⭐ 關鍵 */
+    top: 100%;              /* ⭐ 往下展開 */
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: white;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .nav-links a,
+  .nav-links .logout-btn {
+    width: 100%;                 /* ⭐ 統一寬度 */
+    text-align: center;          /* ⭐ 文字視覺置中 */
+    justify-content: center;     /* ⭐ flex 內容置中 */
+  }
+
+  .nav-links .logout-btn {
+    margin: 0 auto;              /* 保險 */
+  }
+
+}
+
+
+
+
+
+
+
 
