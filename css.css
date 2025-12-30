@@ -903,7 +903,7 @@ section {
   display: flex;
   width: 300%; /* 三張圖佔 300% */
   /* 總時長 8 秒 (3秒停+1秒動) * 2張 */
-  animation: slide-right 8s infinite ease-in-out;
+  animation: slide-right 12s infinite ease-in-out;
 }
 
 .banner-wrap {
