@@ -921,9 +921,25 @@ section {
 
 /* 永遠向右滑動動畫 */
 @keyframes slide-right {
-  0%, 37.5% { transform: translateX(0); }             /* 第一張停 3 秒 */
-  50%, 87.5% { transform: translateX(-33.333%); }    /* 換到第二張停 3 秒 */
-  100% { transform: translateX(-66.666%); }          /* 滑向重複的第一張 */
+  /* 第一張圖停留：0s 到 5s */
+  0%, 41.67% { 
+    transform: translateX(0); 
+  }
+  
+  /* 第一張切換到第二張：5s 到 6s (41.67% + 8.33% = 50%) */
+  50% { 
+    transform: translateX(-33.333%); 
+  }
+
+  /* 第二張圖停留：6s 到 11s (50% + 41.67% = 91.67%) */
+  91.67% { 
+    transform: translateX(-33.333%); 
+  }
+
+  /* 第二張切換回重複的第一張：11s 到 12s (91.67% + 8.33% = 100%) */
+  100% { 
+    transform: translateX(-66.666%); 
+  }
 }
 
 /* 行動端調整 */
