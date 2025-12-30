@@ -1,17 +1,15 @@
 // 表單送出提示
-// 表單送出提示
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("contactForm");
-    const formMessage = document.getElementById("formMessage");
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+  const formMessage = document.getElementById("formMessage");
 
-    if(form && formMessage){
-        form.addEventListener("submit", function(e){
-            e.preventDefault();
-            formMessage.textContent = "您的訊息已送出，我們會盡快與您聯絡！";
-            form.reset();
-        });
-    }
+  if (!form) return;
+
+  form.addEventListener("submit", function () {
+    formMessage.textContent = "已送出，我們會盡快與您聯絡 🙌";
+  });
 });
+
 
 
 function goTeamZone() {
@@ -76,6 +74,26 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// banner
+const texts = [
+  "整合行銷",
+  "品牌策略",
+  "數據驅動成長",
+  "長期價值經營"
+];
+
+let index = 0;
+const heroText = document.getElementById("hero-text");
+
+setInterval(() => {
+  index = (index + 1) % texts.length;
+  heroText.style.opacity = 0;
+
+  setTimeout(() => {
+    heroText.textContent = texts[index];
+    heroText.style.opacity = 1;
+  }, 400);
+}, 3000);
 
 
 

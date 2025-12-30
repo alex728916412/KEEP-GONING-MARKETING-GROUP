@@ -19,23 +19,23 @@ if (localStorage.getItem("auth") !== "true") {
   <div class="nav">
     <a class="logo" href="index.html">KEEP GOING Marketing Group</a>
     
-        <button class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-        </button>
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     
-    <nav class="nav-links" id="navLinks">
+    <ul class="nav-links" id="navLinks">
       <a href="index.html">首頁</a>
+      <a href="index.html#video-library">影片</a>
       <a href="index.html#services">服務</a>
-      <a href="team.html">團隊</a>
+      <a href="team.html">團隊</a></li>
       <a href="index.html#trust">回饋</a>
       <a href="index.html#contact">聯絡</a>
       <a href="https://tw.shop.com" target="_blank" rel="noopener noreferrer">前往商城</a>
-      <a href="group.html" onclick="goTeamZone()">團隊專區 </a>
+      <a href="group.html" onclick="goTeamZone()">團隊專區</a>
       <button id="logoutBtn">登出</button>
-
-    </nav>
+    </ul>
   </div>
 </header>
 
@@ -43,12 +43,32 @@ if (localStorage.getItem("auth") !== "true") {
 
 
 <main>
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">KEEP GOING · MARKETING GROUP</span>
+
+    <h1>
+      <span id="hero-dynamic">整合行銷</span><br />
+      打造可複製的系統
+    </h1>
+
+    <p class="hero-desc">
+      我們不追逐短期流量，而是設計能長期運作的商業結構
+    </p>
+
+    <a href="#contact" class="cta">開始合作</a>
+
+  </div>
+</section>
 <div class="section-header">
   <h2>真實顧客回饋</h2>
   <p class="section-desc">
     來自不同行業客戶的實際合作經驗與成果分享
   </p>
 </div>
+</section>
 
 
 

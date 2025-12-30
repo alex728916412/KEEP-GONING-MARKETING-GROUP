@@ -20,9 +20,10 @@
     
     <ul class="nav-links" id="navLinks">
       <a href="index.html">首頁</a>
+      <a href="index.html#video-library">影片</a>
       <a href="index.html#services">服務</a>
       <a href="team.html">團隊</a></li>
-      <a href="index.html#trust">回饋</a>
+      <a href="index.html#trustme">回饋</a>
       <a href="index.html#contact">聯絡</a>
       <a href="https://tw.shop.com" target="_blank" rel="noopener noreferrer">前往商城</a>
       <a href="group.html" onclick="goTeamZone()">團隊專區</a>
@@ -31,16 +32,16 @@
   </div>
 </header>
 
-<main>
-<section class="hero">
-    <div class="hero-content">
-  <span class="hero-subtitle">專業策略・長期成長</span>
-  <h1>打造品牌成長引擎</h1>
-  <p>我們結合一對一行銷、網站架設與聯盟行銷</p>
-  <p>讓品牌持續擴張，增加信任感。</p>
-  <a class="cta" href="#contact">預約策略諮詢</a>
-    </div>
-</section>
+<div class="slider">
+  <div class="slides">
+    <div class="banner-wrap"><img src="1.png" alt="banner1"></div>
+    <div class="banner-wrap"><img src="3.png" alt="banner2"></div>
+    <!-- 關鍵：多放一張與第一張一樣的圖，用來做無縫轉場 -->
+    <div class="banner-wrap"><img src="1.png" alt="banner1"></div>
+  </div>
+</div>
+
+
 
 <section id="services" class="section-bg">
   <div class="container">
@@ -57,9 +58,64 @@
   </div>
 </section>
 
+<section id="video-library" class="video-library">
+
+  <div class="section-header">
+    <h2>產品與系統參考影片</h2>
+    <p class="section-desc">
+      官方說明、專業訪談與公開分享內容
+    </p>
+  </div>
+
+  <div class="video-grid">
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe
+          width="100%"
+          height="315"
+          src="https://www.youtube.com/embed/LnN7TqTHaNQ"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+      <p class="video-desc">等滲透傳輸系統說明</p>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/影片ID2"
+          title="名人與專業分享"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-desc">名人與專業人士的實際觀點</p>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/影片ID3"
+          title="公司官方產品影片"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-desc">公司官方產品與研發理念</p>
+    </div>
+
+  </div>
+
+</section>
+
 
 <div class="section-header">
-  <h2>真實顧客回饋</h2>
+  <h2 id="trustme">真實顧客回饋</h2>
   <p class="section-desc">
     來自不同行業客戶的實際合作經驗與成果分享
   </p>
@@ -99,16 +155,43 @@
   <div class="container">
     <h2 class="section-title">開始合作</h2>
     <p class="section-subtitle">讓策略，而不是運氣，帶你前進</p>
-    <form id="contactForm">
-      <input id="name" required placeholder="姓名" />
-      <input id="email" type="email" required placeholder="Email" />
-      <textarea id="message" rows="4" placeholder="簡述您的需求"></textarea>
+
+    <form
+      id="contactForm"
+      action="https://formspree.io/f/xkonqybr"
+      method="POST"
+    >
+      <input
+        type="text"
+        name="name"
+        required
+        placeholder="姓名"
+      />
+
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="Email"
+      />
+
+      <textarea
+        name="message"
+        rows="4"
+        placeholder="簡述您的需求"
+      ></textarea>
+
+      <!-- 防垃圾信（Formspree 建議） -->
+      <input type="text" name="_gotcha" style="display:none">
+
       <button type="submit">送出諮詢</button>
+
       <p id="formMessage"></p>
     </form>
   </div>
 </section>
-</main>
+
+
 
 <footer>
   © 2025 Strategic Marketing Group ｜ 專業行銷顧問團隊
