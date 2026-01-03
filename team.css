@@ -898,6 +898,7 @@
     font-size: 3rem;
     line-height: 1.2;
     margin-bottom: 20px;
+    color: var(--c-white);
 }
 
 .carl-media-compact .gold { color: var(--c-gold); }
@@ -908,6 +909,7 @@
     margin-bottom: 30px;
     max-width: 480px;
 }
+
 
 .carl-media-compact .carl-mini-stats {
     display: flex;
