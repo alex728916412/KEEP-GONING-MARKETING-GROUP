@@ -1,21 +1,33 @@
 /* TEAM */
 /* --- 核心結構樣式 --- */
+
+.team-page {
+  padding: 140px 48px;
+}
+
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
+    display: grid;
+    /* 這裡使用 auto-fill 配合 1fr，確保卡片在寬螢幕時均分空間 */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
 }
 
 .team-card {
-  background: #ffffff;
-  padding: 32px 24px;
-  border-radius: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid #f1f5f9;
+    background: #ffffff;
+    padding: 40px 24px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 改為頂部對齊，讓頭像位置一致 */
+    height: 100%;
+    /* 設定一個基本高度，讓文字少的卡片也能跟別人一樣高 */
+    min-height: 380px; 
+    transition: all 0.3s ease;
 }
 
 /* 頭像容器 */
@@ -72,15 +84,23 @@
 }
 
 .team-card h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.25rem;
-  color: #1e293b;
+    margin: 16px 0 8px 0;
+    font-size: 1.25rem;
+    color: #1e293b;
+    min-height: 2.8rem; /* 固定高度：兩行文字空間 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .team-card p {
-  color: #64748b;
-  font-size: 0.95rem;
-  margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+    margin: 0;
+    min-height: 3rem; /* 固定高度：確保職稱長短不影響卡片高度 */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 /* --- 個別 Hover 效果 (專屬顏色) --- */
@@ -99,6 +119,56 @@
 .team-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* ============================================================
+   TEAM PAGE - 寬版卡片 RWD 優化
+   ============================================================ */
+
+/* --- 1. 調整全域網格：讓卡片預設就更寬 --- */
+@media (min-width: 1025px) {
+  .grid {
+    /* 將最小值從 280px 提升到 340px，確保卡片大氣 */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+  }
+}
+
+/* --- 2. 平板與大螢幕手機 (769px ~ 1024px) --- */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        padding: 0 20px;
+    }
+}
+
+/* --- 3. 中小型手機 (768px 以下) --- */
+@media (max-width: 768px) {
+    .grid {
+        /* 強制單欄顯示，並讓卡片寬度一致填滿 */
+        grid-template-columns: 1fr; 
+    }
+    
+    .team-card {
+        max-width: 100%; /* 移除之前的 450px 限制 */
+        min-height: auto; /* 手機端恢復自然高度，但左右寬度會一致 */
+        padding: 40px 30px;
+    }
+
+    .avatar {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+/* --- 4. 極小螢幕調整 --- */
+@media (max-width: 480px) {
+  .grid {
+    padding: 0 15px;
+  }
+  .team-card {
+    padding: 32px 20px;
+  }
 }
 
 
@@ -246,11 +316,12 @@
     margin-bottom: 35px;
 }
 
-.ax-v11-statement {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: #475569;
-    max-width: 580px;
+.ax-v11-statement, 
+.ax-v11-value-card p, 
+.ax-v11-spec-content p {
+    text-align: justify;         /* 兩端對齊，讓左右邊界切齊 */
+    text-justify: inter-word;    /* 增加字間距來達成對齊 */
+    word-break: break-all;       /* 防止英文單字過長撐破版面 */
 }
 
 .ax-v11-bold { font-weight: 800; color: #0f172a; }
@@ -434,6 +505,103 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .ax-v11-inner { padding: 0 40px; }
+    .ax-v11-big-name { font-size: 4.5rem; }
+    .ax-v11-visual-text { font-size: 4rem; }
+}
+
+/* --- [2] 平板直向與大螢幕手機 (769px ~ 1024px) --- */
+@media (max-width: 1024px) {
+    .ax-v11-hq { padding: 60px 0; }
+    
+    .ax-v11-billboard {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        margin-bottom: 80px;
+    }
+
+    .ax-v11-hero-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 內容置中 */
+    }
+
+    .ax-v11-statement {
+        max-width: 100%;
+        font-size: 1.15rem;
+    }
+
+    .ax-v11-portrait {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .ax-v11-value-grid {
+        grid-template-columns: repeat(2, 1fr); /* 平板改兩欄 */
+    }
+
+    /* 性能交錯區：取消交錯，改為上下排列 */
+    .ax-v11-zigzag-item, 
+    .ax-v11-row-reverse {
+        flex-direction: column;
+        padding: 50px 0;
+        text-align: left; /* 文字維持左對齊較專業 */
+    }
+
+    .ax-v11-spec-content {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+    }
+
+    .ax-v11-visual-text {
+        justify-content: flex-start;
+        font-size: 3.5rem;
+        opacity: 0.15;
+    }
+}
+
+/* --- [3] 中型手機 (481px ~ 768px) --- */
+@media (max-width: 768px) {
+    .ax-v11-big-name { font-size: 3.5rem; letter-spacing: -2px; }
+    
+    .ax-v11-value-grid {
+        grid-template-columns: 1fr; /* 手機端改單欄 */
+    }
+
+    .ax-v11-value-card { padding: 35px 25px; }
+}
+
+/* --- [4] 小型手機 (480px 以下) --- */
+@media (max-width: 480px) {
+    .ax-v11-inner { padding: 0 25px; }
+
+    .ax-v11-big-name { 
+        font-size: 2.8rem; 
+        line-height: 1.1;
+        letter-spacing: -1px; 
+    }
+
+    .ax-v11-statement { font-size: 1.05rem; }
+
+    .ax-v11-spec-content h4 { font-size: 1.4rem; }
+
+    .ax-v11-visual-text {
+        font-size: 2.5rem;
+        margin-top: 15px;
+    }
+
+    /* 數據標籤微調：防止在手機端溢出 */
+    .ax-v11-data-chip {
+        padding: 4px 10px;
+        font-size: 8px;
+        top: 0;
+        right: 0;
+    }
+}
+
 
 
 
@@ -445,7 +613,7 @@
 
 
 /* ============================================================
-   Austin Wang - 日系商務極簡版 (Pro Minimal)
+   Austin Yeh - 日系商務極簡版 (Pro Minimal)
    ============================================================ */
 
 .austin-pro-minimal {
@@ -487,10 +655,9 @@
 
 .pro-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: 3.8rem;
-    line-height: 1.15;
-    font-weight: 700;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .weight-light {
@@ -555,70 +722,157 @@
 .logic-pro-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px; /* 增加間距讓質感出來 */
-    margin-top: 80px;
+    gap: 40px; /* 加大間距，產生呼吸感 */
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 60px auto;
 }
 
 .logic-pro-card {
     position: relative;
-    padding: 60px 40px;
     background: #ffffff;
-    border-top: 1px solid #1a1a1a; /* 初始上方粗線 */
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    cursor: default;
+    padding: 60px 40px;
+    border-top: 2px solid #f1f1f1; /* 初始上方細線 */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); /* 更高級的貝茲曲線 */
+    cursor: pointer;
+}
+
+.card-body {
+    flex-grow: 1; /* 確保內容區塊填滿空間 */
 }
 
 /* 帥氣特效：隱形邊框，Hover時生長 */
 .card-border {
     position: absolute;
-    top: -1px; left: 0; width: 100%; height: 100%;
-    border: 1px solid var(--pro-black);
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: 1px solid #000000;
     opacity: 0;
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    z-index: 1;
+    transform: scale(0.98); /* 初始稍微縮小 */
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    z-index: 5;
     pointer-events: none;
 }
 
 .logic-pro-card:hover {
-    transform: translateY(-10px); /* 緩慢上浮 */
-    background: #fbfbfb;
+    transform: translateY(-12px); 
+    background: #ffffff;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08); /* 現代感的深投影 */
 }
 
 /* Hover 時顯示完整邊框，模擬「選取」感 */
 .logic-pro-card:hover .card-border {
     opacity: 1;
+    transform: scale(1); /* Hover 時展開貼合 */
 }
 
 /* 數字動態：滑過時變色 */
 .card-num {
-    font-size: 14px;
-    font-weight: 700;
-    color: #999;
-    margin-bottom: 30px;
-    transition: color 0.4s;
-    position: relative;
-    z-index: 2;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #bbb;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.4s;
+}
+
+.card-num::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: #eee;
+    transition: all 0.4s;
 }
 
 .logic-pro-card:hover .card-num {
-    color: #1a1a1a;
+    color: #000;
+}
+
+.logic-pro-card:hover .card-num::before {
+    width: 40px; /* 滑過時橫線伸長 */
+    background: #000;
 }
 
 .logic-pro-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 25px;
+    font-size: 1.5rem;
     font-weight: 700;
-    position: relative;
-    z-index: 2;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
 }
 
 .card-body p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #666;
-    line-height: 2;
+    line-height: 1.8;
+    text-align: justify;
+    text-justify: inter-word;
+    word-break: break-all;
     transition: color 0.4s;
-    position: relative;
-    z-index: 2;
+}
+
+.logic-pro-card:hover p {
+    color: #333;
+}
+
+.pro-description, 
+.card-body p {
+    text-align: justify;         /* 兩端對齊 */
+    text-justify: inter-word;    /* 調整字間距 */
+    word-break: break-all;       /* 確保邊界不凸出單字 */
+}
+
+.pro-name-cn {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    text-align: center; /* 強制靠左 */
+}
+
+.pro-name-en {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--pro-gray);
+    display: block;
+    text-align: center; /* 強制靠左 */
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.pro-value-slogan {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 讓內部的 span 置中 */
+    text-align: center;
+    width: 100%;
+    gap: 10px;
+    padding: 40px 0;
+    border-top: 1px solid var(--pro-border);
+    border-bottom: 1px solid var(--pro-border);
+    margin-bottom: 40px;
+}
+
+.pro-value-slogan span {
+    font-size: 2.8rem;
+    letter-spacing: 8px; /* 增加四字標語的延伸感 */
+    display: block;
+}
+
+/* 描述文字：維持兩端對齊，解決凸字問題 */
+.pro-description {
+    text-align: justify;
+    text-justify: inter-word;
+    word-break: break-all;
+    max-width: 600px;
+    margin: 0 auto 50px; /* 段落整體置中 */
+    line-height: 2;
 }
 
 .logic-pro-card:hover p {
@@ -626,11 +880,99 @@
 }
 
 /* 響應式微調 */
-@media (max-width: 992px) {
-    .logic-pro-grid { grid-template-columns: 1fr; }
-    .logic-pro-card:hover { transform: none; } /* 手機端取消位移 */
+@media (max-width: 1199px) {
+    .austin-pro-minimal .container {
+        padding: 0 40px;
+    }
+    
+    .hero-content-grid {
+        gap: 50px; /* 縮小圖文間距 */
+    }
+
+    .pro-name {
+        font-size: 4rem; /* 稍微縮小名字 */
+    }
+
+    .pro-title {
+        font-size: 2.8rem;
+    }
+
+    .img-frame-simple {
+        width: 380px;
+        height: 500px;
+    }
 }
 
+/* --- 4. 平板直向 (481px - 768px) --- */
+@media (max-width: 768px) {
+    .austin-hero-main {
+        padding: 100px 0 60px;
+    }
+
+    .hero-content-grid {
+        flex-direction: column; /* 改為垂直排列 */
+        text-align: center;      /* 內容置中 */
+        gap: 40px;
+    }
+
+    .pro-title {
+        text-align: center;
+    }
+
+    .pro-name {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+    }
+
+    .pro-description {
+        max-width: 100%;
+        margin: 0 auto 40px;
+        font-size: 1.05rem;
+    }
+
+    .img-frame-simple {
+        width: 100%;
+        max-width: 400px; /* 手機端圖片不要太大 */
+        height: 450px;
+        margin: 0 auto;
+    }
+
+    .logic-pro-grid {
+        grid-template-columns: 1fr; /* 核心架構改為單欄 */
+        gap: 20px;
+    }
+}
+
+/* --- 5. 小型手機 (480px 以下) --- */
+@media (max-width: 480px) {
+    .austin-pro-minimal .container {
+        padding: 0 25px;
+    }
+
+    .pro-name {
+        font-size: 2.8rem; /* 確保小螢幕不爆字 */
+        letter-spacing: -1px;
+    }
+
+    .pro-title {
+        font-size: 2rem;
+    }
+
+    .meta-info {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .logic-pro-card {
+        padding: 40px 25px; /* 縮小卡片內距 */
+    }
+
+    .pro-cta .btn-consult {
+        display: block;
+        width: 100%; /* 按鈕滿版，方便手機點擊 */
+        text-align: center;
+    }
+}
 
 
 
@@ -642,25 +984,9 @@
 /* ============================================================
    Ben - 陽光專業清新版 (精確對齊修正)
    ============================================================ */
-.ben-glass-pro .ben-portrait-img {
-    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    filter: grayscale(20%); /* 平時稍微降飽和，看起來比較冷靜 */
-}
 
-.ben-glass-pro .ben-portrait-container:hover .ben-portrait-img {
-    transform: scale(1.05);
-    filter: grayscale(0%); /* 移上去變彩色，代表點亮靈感 */
-    box-shadow: 0 0 40px rgba(255, 140, 66, 0.4); /* 溫暖的橘色光暈 */
-}
-
-.ben-glass-pro .ben-portrait-img {
-    animation: benReveal 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-
-
-
-   .ben-glass-pro {
+/* --- 核心變數與基礎 --- */
+.ben-glass-pro {
     --primary-orange: #ff8c42;
     --deep-navy: #0f172a;
     --soft-text: #475569;
@@ -670,148 +996,227 @@
     color: var(--deep-navy);
 }
 
-.ben-glass-pro .ben-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
+.ben-glass-pro .ben-wrapper { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 40px; 
 }
 
-/* --- Hero Layout 修正 --- */
-.ben-glass-pro .ben-hero-section {
-    padding: 120px 0 80px;
+/* --- 電腦版佈局 --- */
+.ben-hero-section { padding: 100px 0; }
+.ben-hero-layout { display: flex; align-items: center; gap: 80px; }
+.ben-hero-visual { flex: 1; }
+.ben-hero-text { flex: 1.2; text-align: left; }
+
+.ben-portrait-img {
+    width: 100%; height: auto; border-radius: 20px;
+    box-shadow: 20px 20px 0px var(--primary-orange);
 }
 
-.ben-glass-pro .ben-hero-layout {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-}
+/* 文字層次 */
+.ben-name-cn { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin: 0; }
+.ben-name-en { font-size: 2rem; font-weight: 300; color: var(--primary-orange); letter-spacing: 5px; margin-bottom: 25px; }
+.ben-slogan-wrap { font-size: 2.2rem; font-weight: 800; line-height: 1.4; margin: 30px 0; }
+.ben-orange-text { color: var(--primary-orange); }
 
-.ben-glass-pro .ben-hero-text {
-    flex: 1.2;
-    text-align: left;
-}
+.ben-desc-new { font-size: 1.1rem; line-height: 2; color: var(--soft-text); text-align: justify; margin-bottom: 40px; }
 
-.ben-glass-pro .ben-badge-new {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: var(--primary-orange);
-    margin-bottom: 20px;
-    display: inline-block;
-}
+/* 卡片佈局 (電腦版三欄) */
+.ben-grid-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.ben-card-new { background: #fff; padding: 40px 30px; border-radius: 15px; border: 1px solid #eee; position: relative; }
 
-.ben-glass-pro .ben-title-new {
-    font-size: 4rem;
-    font-weight: 900;
-    line-height: 1.2;
-    margin-bottom: 30px;
-}
-
-.ben-glass-pro .ben-gradient-text {
-    color: var(--primary-orange); /* 暫時移除複雜漸層，讓視覺更純粹 */
-}
-
-.ben-glass-pro .ben-desc-new {
-    font-size: 1.15rem;
-    line-height: 2;
-    color: var(--soft-text);
-    max-width: 500px;
-    margin-bottom: 40px;
-}
-
-/* 圖片側視覺修正 */
-.ben-glass-pro .ben-hero-visual {
-    flex: 0.8;
-    position: relative;
-}
-
-.ben-glass-pro .ben-portrait-container {
+/* --- 圖片裝飾 (電腦版) --- */
+.ben-portrait-container {
     position: relative;
     width: 100%;
+    max-width: 450px;
 }
 
-.ben-glass-pro .ben-portrait-img {
+.ben-portrait-img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    z-index: 2;
+    position: relative;
+    box-shadow: 20px 20px 0px var(--primary-orange);
+}
+
+.ben-deco-box {
+    position: absolute;
+    top: -20px; left: -20px;
+    width: 120px; height: 120px;
+    background: repeating-linear-gradient(45deg, #e5e7eb, #e5e7eb 2px, transparent 2px, transparent 10px);
+    z-index: 1;
+}
+
+/* --- 圖片樣式 --- */
+.ben-hero-visual { 
+    flex: 0.8; 
+}
+
+.ben-portrait-container {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+}
+
+.ben-hero-text { 
+    flex: 1.2; text-align: left; 
+}
+
+.ben-portrait-img {
     width: 100%;
     height: auto;
     border-radius: 20px;
-    position: relative;
-    z-index: 2;
-    box-shadow: 20px 20px 0px var(--primary-orange); /* 陽光感實色陰影 */
+    box-shadow: 20px 20px 0px var(--primary-orange);
 }
 
-.ben-glass-pro .ben-deco-box {
+.ben-portrait-container:hover .ben-portrait-img {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+    box-shadow: 25px 25px 0px var(--primary-orange);
+}
+
+.ben-deco-box {
     position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 100px;
-    height: 100px;
+    top: -20px; left: -20px;
+    width: 100px; height: 100px;
     background: repeating-linear-gradient(45deg, #eee, #eee 2px, transparent 2px, transparent 8px);
     z-index: 1;
 }
 
-/* --- 卡片區塊修正 --- */
-.ben-glass-pro .ben-service-section {
-    padding: 80px 0 120px;
+/* --- 文字區樣式 --- */
+.ben-hero-text {
+    flex: 1.2;
+    text-align: left;
 }
 
-.ben-glass-pro .ben-grid-new {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.ben-glass-pro .ben-card-new {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.ben-glass-pro .ben-card-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.ben-badge-new {
+    color: var(--primary-orange);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 4px;
     margin-bottom: 20px;
 }
 
-.ben-glass-pro .ben-card-number {
-    font-weight: 900;
-    font-size: 1.2rem;
-    color: #cbd5e1;
+.ben-title-group {
+    margin-bottom: 20px;
 }
 
-.ben-glass-pro .ben-card-new h3 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin: 0;
+.ben-name-cn { 
+    font-size: 5rem; 
+    font-weight: 900; 
+    line-height: 1; 
+    margin: 0; 
+    text-align: left;
 }
 
-.ben-glass-pro .ben-card-new p {
+.ben-name-en { 
+    font-size: 2.2rem; 
+    font-weight: 300; 
+    color: var(--primary-orange); 
+    letter-spacing: 4px; 
+    display: block; 
+    text-align: left;
+}
+
+.ben-slogan-wrap { 
+    font-size: 2.4rem; 
+    font-weight: 800; 
+    line-height: 1.3; 
+    margin: 30px 0; 
+}
+
+.ben-orange-text { 
+    color: var(--primary-orange); 
+}
+
+.ben-gradient-text {
+    color: var(--primary-orange);
+}
+
+.ben-desc-new {
+    font-size: 1.1rem;
+    line-height: 2;
     color: var(--soft-text);
-    line-height: 1.8;
-    margin: 0;
+    text-align: justify;
+    text-justify: inter-word;
+    word-break: break-all;
+    max-width: 550px;
 }
 
-/* 強調卡片樣式 */
-.ben-glass-pro .ben-card-new.highlight {
-    border-color: var(--primary-orange);
-    background: #fffefb;
-}
-
-.ben-glass-pro .ben-card-new:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-}
-
-/* 按鈕修正 */
-.ben-glass-pro .ben-button-new {
+.ben-button-new {
     display: inline-block;
-    padding: 18px 40px;
+    padding: 20px 40px;
+    background: var(--deep-navy);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.ben-button-new:hover { background: var(--primary-orange); 
+    transform: translateY(-3px); 
+}
+
+/* --- 卡片區塊 --- */
+.ben-service-section { 
+    padding: 60px 0 100px; 
+}
+
+.ben-grid-new {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 電腦版三欄 */
+    gap: 30px;
+    align-items: stretch;
+}
+
+.ben-card-new {
+    position: relative;
+    background: #ffffff;
+    padding: 50px 35px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    transition: 0.4s;
+}
+
+.ben-card-body { flex-grow: 1; }
+
+.ben-card-body p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--soft-text);
+    text-align: justify;
+}
+
+.ben-card-header h3 { 
+    font-size: 1.5rem; 
+    font-weight: 800; 
+    margin-bottom: 20px; 
+}
+
+.ben-card-border {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: 2px solid var(--primary-orange);
+    border-radius: 15px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.ben-card-new:hover {
+    transform: translateY(-10px);
+}
+
+.ben-card-new:hover .ben-card-border { opacity: 1; }
+
+/* --- 按鈕 --- */
+.ben-button-new {
+    display: inline-block;
+    padding: 18px 35px;
     background: var(--deep-navy);
     color: #fff;
     border-radius: 10px;
@@ -820,17 +1225,84 @@
     transition: 0.3s;
 }
 
-.ben-glass-pro .ben-button-new:hover {
-    background: var(--primary-orange);
+.ben-button-new:hover { background: var(--primary-orange); }
+
+/* --- RWD 響應式 --- */
+
+@media (max-width: 1024px) {
+    .ben-hero-layout { gap: 40px; }
+    .ben-name-cn { font-size: 3.5rem; }
+    .ben-slogan-wrap { font-size: 2rem; }
 }
 
-/* 手機版適配 */
 @media (max-width: 992px) {
-    .ben-glass-pro .ben-hero-layout { flex-direction: column; }
-    .ben-glass-pro .ben-grid-new { grid-template-columns: 1fr; }
+    .ben-hero-layout {
+        flex-direction: column; /* 圖片在上，文字在下 */
+        text-align: center;
+    }
+    .ben-hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ben-desc-new { margin: 0 auto 40px; }
+    
+    .ben-grid-new {
+        grid-template-columns: repeat(2, 1fr); /* 平板改兩欄 */
+    }
 }
 
+/* 核心修正：針對手機版卡片窄長的問題 */
+@media (max-width: 768px) {
+    .ben-wrapper { padding: 0 25px; }
+    
+    .ben-hero-layout {
+        flex-direction: column; /* 圖片在上，文字在下 */
+        gap: 40px;
+    }
 
+    .ben-hero-visual {
+        width: 100%;
+        max-width: 300px; /* 限制手機版頭像大小 */
+        margin: 0 auto;
+    }
+
+    .ben-hero-text {
+        text-align: center; /* 全體置中核心指令 */
+        width: 100%;
+    }
+
+    /* 針對你要求的四個項目的手機置中樣式 */
+    .ben-name-cn { 
+        font-size: 3rem; 
+        text-align: center; 
+    }
+    .ben-name-en { 
+        font-size: 1.5rem; 
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+    .ben-slogan-wrap { 
+        font-size: 1.8rem; 
+        text-align: center; /* 這裡控制了「透過深度面談」與「釐清核心」置中 */
+        margin: 20px 0;
+    }
+
+    .ben-desc-new {
+        text-align: center; /* 描述文字在手機上也建議置中或兩端對齊 */
+        font-size: 1rem;
+    }
+
+    /* 解決卡片窄長問題：手機版改為單欄 */
+    .ben-grid-new {
+        grid-template-columns: 1fr; 
+    }
+
+    .ben-button-new {
+        width: 100%;
+        text-align: center;
+    }
+}
 
 
 
@@ -840,218 +1312,117 @@
 
 
 /* ============================================================
-   Carl - 大領袖精煉整合版 (深藍白相間)
+   Carl - 最終校正版 (徹底解決手機卡片細長問題)
    ============================================================ */
 
 .carl-media-compact {
-    --c-navy: #0f172a;      /* 深邃海軍藍 */
-    --c-gold: #c5a059;      /* 專業金 */
+    --c-navy: #0f172a;
+    --c-gold: #c5a059;
     --c-white: #ffffff;
-    --c-text-gray: #64748b;
+    --c-text-gray: #94a3b8;
+    background-color: #f8fafc;
     font-family: 'Noto Sans TC', sans-serif;
-    line-height: 1.6;
 }
 
 .carl-media-compact .carl-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 25px;
 }
 
-/* --- 1. Hero Section --- */
+.carl-media-compact .carl-section-header {
+    font-size: 17PX;
+    margin-bottom: 70px; 
+}
+
+/* --- Hero 區與圖片裁切修正 --- */
 .carl-media-compact .carl-hero {
     background: var(--c-navy);
     color: var(--c-white);
-    padding: 70px 0 90px;
+    padding: 80px 0 100px;
     clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-    position: relative;
 }
 
 .carl-media-compact .carl-main-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: center;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 50px;
+    align-items: center;
 }
 
-.carl-media-compact .carl-status {
-    color: var(--c-gold);
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
+.carl-name-display .cn { font-size: 3.6rem; font-weight: 900; color: var(--c-white); line-height: 1.1; }
+.carl-name-display .en { font-size: 2.4rem; color: var(--c-gold); letter-spacing: 4px; margin-left: 5px; }
 
-.carl-media-compact .dot {
-    display: inline-block;
-    width: 8px; height: 8px;
-    background: var(--c-gold);
-    border-radius: 50%;
-    margin-right: 8px;
-    animation: carlBlink 1.5s infinite;
-}
+.carl-media-compact .carl-status { color: var(--c-gold); font-weight: 700; margin-bottom: 20px; letter-spacing: 2px; }
+.carl-media-compact .dot { display: inline-block; width: 8px; height: 8px; background: var(--c-gold); border-radius: 50%; margin-right: 8px; }
 
-@keyframes carlBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-.carl-media-compact .carl-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: var(--c-white);
-}
-
+.carl-media-compact .carl-title { font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px;}
 .carl-media-compact .gold { color: var(--c-gold); }
+.carl-media-compact .carl-lead { color: var(--c-text-gray); font-size: 1.05rem; margin-bottom: 30px; text-align: justify; }
 
-.carl-media-compact .carl-lead {
-    font-size: 1.05rem;
-    color: #94a3b8;
-    margin-bottom: 30px;
-    max-width: 480px;
-}
-
-
-.carl-media-compact .carl-mini-stats {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 35px;
-}
-
-.carl-media-compact .s-item strong {
-    display: block;
-    font-size: 1.6rem;
-    color: var(--c-gold);
-}
-
+.carl-media-compact .carl-mini-stats { display: flex; gap: 40px; margin-bottom: 30px; }
+.carl-media-compact .s-item strong { display: block; font-size: 1.6rem; color: var(--c-gold); }
 .carl-media-compact .s-item span { font-size: 0.8rem; color: #64748b; }
 
-/* .carl-media-compact .image-inner {
+/* 圖片裁切修正：使用 aspect-ratio 確保頭部顯示 */
+.carl-media-compact .image-inner {
     position: relative;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
-    height: 420px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-} */
-
-/* 效果 2：深層聚焦 */
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
 .carl-media-compact .carl-photo {
-    filter: grayscale(0.4) brightness(0.8) sepia(0.2); /* 初始沉穩色調 */
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%; height: 100%; object-fit: cover;
+    object-position: top center; /* 關鍵：確保 Carl 的頭部不被切掉 */
+    filter: grayscale(0.3) brightness(0.8);
+    transition: 0.6s;
 }
+.carl-media-compact .image-inner:hover .carl-photo { filter: grayscale(0) brightness(1); transform: scale(1.05); }
 
-.carl-media-compact .image-inner:hover .carl-photo {
-    filter: grayscale(0) brightness(1) sepia(0); /* 恢復真實色彩 */
-    transform: scale(1.05); /* 輕微放大 */
-}
-
-/* 增加一個內部的金屬光澤 */
-.carl-media-compact .image-inner::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(45deg, rgba(197, 160, 89, 0.2) 0%, transparent 50%);
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.carl-media-compact .image-inner:hover::after {
-    opacity: 1;
-}
-
-.carl-media-compact .carl-photo {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: 0.6s ease;
-}
-
-.carl-media-compact .play-overlay {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(197, 160, 89, 0.9);
-    width: 60px; height: 60px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--c-navy);
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.carl-media-compact .image-inner:hover .carl-photo { transform: scale(1.08); }
-.carl-media-compact .image-inner:hover .play-overlay { opacity: 1; }
-
-/* --- 2. Vision Section (白) --- */
-.carl-media-compact .carl-vision-white {
-    padding: 80px 0;
-    background: var(--c-white);
-}
-
-.carl-media-compact .carl-section-header {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.carl-media-compact .carl-sub-label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--c-gold);
-    letter-spacing: 2px;
-    display: block;
-    margin-bottom: 10px;
-}
-
+/* --- 願景卡片修正 (解決截圖中的細長條問題) --- */
+/* --- 願景卡片：中規中矩的專業動態 --- */
 .carl-media-compact .carl-vision-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 25px; /* 增加間距讓陰影有呼吸空間 */
 }
 
 .carl-media-compact .carl-card-vision {
     padding: 35px 25px;
-    background: #f8fafc;
+    background: #ffffff;
+    border-top: 4px solid #e2e8f0; /* 預設改為淺灰色邊框，更耐看 */
     border-radius: 8px;
-    border-top: 4px solid var(--c-gold);
-    transition: 0.4s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out; /* 平滑過渡 */
+    position: relative;
+    top: 0;
 }
 
+/* 懸浮效果：微上浮 + 邊框變色 + 陰影強化 */
 .carl-media-compact .carl-card-vision:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    top: -5px; /* 輕微上移，不突兀 */
+    border-top: 4px solid var(--c-gold); /* 懸浮時才顯現金標，有提示感 */
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1); /* 陰影加深，增加立體感 */
 }
 
-.carl-media-compact .icon-sphere {
-    width: 40px; height: 40px;
-    background: var(--c-navy);
-    color: var(--c-gold);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; margin-bottom: 20px;
+/* 針對卡片內的標題在懸浮時微調（選用） */
+.carl-media-compact .carl-card-vision h3 {
+    transition: color 0.3s ease;
 }
 
-/* --- 3. Quote Section (深藍) --- */
-.carl-media-compact .carl-quote-navy {
-    background: var(--c-navy);
-    padding: 60px 0;
-    text-align: center;
-    color: var(--c-white);
+.carl-media-compact .carl-card-vision:hover h3 {
+    color: var(--c-gold); /* 標題文字隨邊框一起變色 */
 }
 
-.carl-media-compact .carl-quote-content blockquote {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 2rem;
-    color: var(--c-gold);
-    margin-bottom: 15px;
-    font-style: italic;
-}
 
-.carl-media-compact .carl-author { color: #94a3b8; font-size: 1rem; }
-
-/* --- 4. Topics Section (白) --- */
-.carl-media-compact .carl-topics {
-    padding: 80px 0;
-    background: var(--c-white);
-}
-
+/* --- 金句與補充區 --- */
+.carl-media-compact .carl-quote-navy { background: var(--c-navy); padding: 70px 20px; text-align: center; color: var(--c-white); }
+.carl-media-compact .carl-quote-content blockquote { font-size: 1.8rem; color: var(--c-gold); font-style: italic; margin-bottom: 15px; }
+.carl-media-compact .carl-topics { padding: 80px 0; }
+.carl-media-compact .topics-flex { display: flex; gap: 20px; }
+/* --- 自媒體卡片：中規中矩的互動效果 --- */
 .carl-media-compact .topics-flex {
     display: flex;
     gap: 25px;
@@ -1063,38 +1434,101 @@
     padding: 35px;
     border-radius: 12px;
     background: #f1f5f9;
-    transition: 0.3s ease;
+    transition: all 0.3s ease-in-out; /* 平滑過渡 */
+    position: relative;
+    top: 0;
+    border: 1px solid transparent; /* 預設透明邊框防止跳動 */
 }
 
-.carl-media-compact .t-card.dark { background: var(--c-navy); color: #fff; }
-
-.carl-media-compact .t-card h3 { font-size: 1.4rem; margin: 12px 0; }
-
+/* 懸浮效果：微上浮 + 陰影 + 邊框強調 */
 .carl-media-compact .t-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    top: -5px; /* 輕微上移 */
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.1); /* 增加立體感 */
 }
 
-/* 按鈕 */
-.carl-media-compact .btn-carl {
-    display: inline-block;
-    padding: 16px 40px;
-    background: var(--c-gold);
-    color: var(--c-navy);
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 4px;
-    transition: 0.3s;
+/* 亮色卡片：滑過時增加金色邊框 */
+.carl-media-compact .t-card:not(.dark):hover {
+    border-color: var(--c-gold);
+    background: #ffffff; /* 稍微變亮一點點增加反饋 */
 }
 
-/* RWD */
-@media (max-width: 992px) {
-    .carl-media-compact .carl-main-grid { grid-template-columns: 1fr; text-align: center; }
-    .carl-media-compact .carl-lead { margin: 0 auto 30px; }
-    .carl-media-compact .carl-mini-stats { justify-content: center; }
-    .carl-media-compact .carl-vision-grid { grid-template-columns: 1fr; }
-    .carl-media-compact .topics-flex { flex-direction: column; }
-    .carl-media-compact .carl-title { font-size: 2.5rem; }
+/* 暗色卡片：滑過時增強亮度感 */
+.carl-media-compact .t-card.dark {
+    background: var(--c-navy);
+    color: #fff;
+}
+
+.carl-media-compact .t-card.dark:hover {
+    background: #1e293b; /* 懸浮時稍微變淺，透出層次感 */
+    border-color: var(--c-gold);
+}
+
+/* 卡片內文字變色（與願景區一致） */
+.carl-media-compact .t-card h3 {
+    transition: color 0.3s ease;
+}
+
+.carl-media-compact .t-card:hover h3 {
+    color: var(--c-gold);
+}
+
+
+
+.carl-media-compact .btn-carl { display: inline-block; padding: 15px 35px; background: var(--c-gold); color: var(--c-navy); text-decoration: none; font-weight: 700; border-radius: 4px; }
+
+/* ============================================================
+   深度 RWD 適配 (重點修正截圖跑版)
+   ============================================================ */
+
+/* [平板/小筆電] */
+@media (max-width: 1024px) {
+    .carl-media-compact .carl-vision-grid { grid-template-columns: repeat(2, 1fr); } /* 變兩欄 */
+}
+
+/* [手機/窄平板] 強制打破細長條佈局 */
+@media (max-width: 850px) {
+    .carl-media-compact .carl-hero { clip-path: none; padding: 50px 0; }
+    .carl-media-compact .carl-main-grid { 
+        grid-template-columns: 1fr; /* 強制單欄 */
+        text-align: center; 
+    }
+    .carl-visual { order: -1; max-width: 320px; margin: 0 auto 30px; }
+    .carl-content { display: flex; flex-direction: column; align-items: center; }
+    .carl-mini-stats { justify-content: center; }
+    
+    /* 核心修正：將所有橫向排列強制轉為縱向 */
+    .carl-media-compact .carl-vision-grid { 
+        grid-template-columns: 1fr !important; /* 強制變回單欄，字就不會細長了 */
+    }
+    .carl-media-compact .topics-flex { 
+        flex-direction: column; 
+    }
+    
+    .carl-name-display .cn { font-size: 2.8rem; }
+    .carl-title { font-size: 2.2rem; }
+    .carl-media-compact .carl-quote-content blockquote { font-size: 1.4rem; }
+}
+
+/* 手機版 RWD 修正：關閉位移效果避免誤觸不適 */
+@media (max-width: 850px) {
+    .carl-media-compact .carl-card-vision:hover {
+        top: 0; /* 手機版不位移 */
+        border-top: 4px solid var(--c-gold); /* 直接維持金標即可 */
+    }
+}
+
+/* 手機版 RWD 修正：關閉位移 */
+@media (max-width: 850px) {
+    .carl-media-compact .t-card:hover {
+        top: 0;
+    }
+}
+
+/* [極小手機] */
+@media (max-width: 480px) {
+    .carl-name-display .cn { font-size: 2.2rem; }
+    .carl-name-display .en { display: block; margin: 5px 0 0 0; }
+    .btn-carl { width: 100%; text-align: center; }
 }
 
 
@@ -1109,45 +1543,10 @@
    Janet - 高級皮膚保養顧問版 (Skincare Aesthetics)
    ============================================================ */
 
-/* 效果 4：珍珠層次感 */
-.janet-skincare-pro .portrait-frame {
-    position: relative;
-    z-index: 1;
-}
-
-/* 增加一個背後隨動的柔霧塊 */
-.janet-skincare-pro .portrait-frame::before {
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 100%;
-    height: 100%;
-    background: var(--skin-rose);
-    border-radius: 200px 200px 20px 20px;
-    z-index: -1;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.janet-skincare-pro .portrait-frame:hover::before {
-    transform: translate(-35px, -35px) rotate(-3deg);
-    background: #fdf2f0; /* 顏色變淡，更有光澤 */
-}
-
-.janet-skincare-pro .janet-img {
-    transition: all 0.6s ease;
-    filter: sepia(20%) brightness(0.95); /* 初始帶有一點暖色柔焦感 */
-}
-
-.janet-skincare-pro .portrait-frame:hover .janet-img {
-    filter: sepia(0%) brightness(1.05); /* 恢復透亮 */
-    border-radius: 20px; /* 懸停時從拱門變成長方形，增加視覺動態 */
-}
-
 .janet-skincare-pro {
-    --skin-rose: #f9e8e6;      /* 柔霧粉 */
-    --skin-gold: #d4a373;      /* 霧面玫瑰金 */
-    --skin-dark: #4a423f;      /* 沉穩炭棕色（用於文字） */
+    --skin-rose: #f9e8e6;
+    --skin-gold: #d4a373;
+    --skin-dark: #4a423f;
     --skin-white: #ffffff;
     background: linear-gradient(135deg, #fff 0%, #fef8f7 100%);
     color: var(--skin-dark);
@@ -1162,28 +1561,27 @@
     padding: 0 40px;
 }
 
-/* --- 背景柔光 --- */
-.janet-skincare-pro .glow-bg {
-    position: absolute;
-    top: -10%;
-    left: 40%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(249, 232, 230, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
-    z-index: 0;
+/* --- 名字排版與標籤 --- */
+.janet-name-block {
+    margin-bottom: 30px;
 }
 
-/* --- Hero Section --- */
-.janet-skincare-pro .janet-hero {
-    padding: 140px 0 100px;
-    position: relative;
-    z-index: 1;
+.janet-name-display {
+    margin-bottom: 10px;
 }
 
-.janet-skincare-pro .janet-hero-flex {
-    display: flex;
-    align-items: center;
-    gap: 80px;
+.janet-name-display .cn {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--skin-dark);
+    margin-right: 15px;
+}
+
+.janet-name-display .en {
+    font-size: 1.5rem;
+    color: var(--skin-gold);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
 }
 
 .janet-skincare-pro .janet-badge {
@@ -1191,7 +1589,6 @@
     font-weight: 700;
     letter-spacing: 4px;
     color: var(--skin-gold);
-    margin-bottom: 25px;
     padding-left: 40px;
     position: relative;
 }
@@ -1206,17 +1603,27 @@
     background: var(--skin-gold);
 }
 
-.janet-skincare-pro .janet-h1 {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 4rem;
-    line-height: 1.2;
-    margin-bottom: 30px;
-    font-weight: 700;
+/* --- Hero 內容 --- */
+.janet-skincare-pro .janet-hero {
+    padding: 120px 0 100px;
+    position: relative;
+    z-index: 1;
 }
 
-.janet-skincare-pro .text-glow {
-    color: var(--skin-gold);
+.janet-skincare-pro .janet-hero-flex {
+    display: flex;
+    align-items: center;
+    gap: 80px;
 }
+
+.janet-skincare-pro .janet-h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 3.5rem;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+.janet-skincare-pro .text-glow { color: var(--skin-gold); }
 
 .janet-skincare-pro .janet-desc {
     font-size: 1.1rem;
@@ -1224,9 +1631,10 @@
     color: #7a6f6c;
     max-width: 500px;
     margin-bottom: 45px;
+    text-align: justify;
 }
 
-/* --- 圖片區：柔焦與質感 --- */
+/* --- 圖片拱門特效 (已加入 Hover) --- */
 .janet-skincare-pro .janet-visual {
     flex: 1;
     display: flex;
@@ -1237,30 +1645,35 @@
     position: relative;
     width: 100%;
     max-width: 420px;
+    z-index: 1;
+}
+
+.janet-skincare-pro .portrait-frame::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: var(--skin-rose);
+    border-radius: 200px 200px 20px 20px;
+    z-index: -1;
+    transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .janet-skincare-pro .janet-img {
     width: 100%;
     height: 550px;
     object-fit: cover;
-    border-radius: 200px 200px 20px 20px; /* 拱門造型，高級保養感 */
+    border-radius: 200px 200px 20px 20px;
     box-shadow: 0 30px 60px rgba(74, 66, 63, 0.08);
+    transition: 0.6s ease;
 }
 
-.janet-skincare-pro .deco-drop {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.8);
-    z-index: 2;
-}
+.janet-skincare-pro .portrait-frame:hover::before { transform: translate(-30px, -30px); background: #fdf2f0; }
+.janet-skincare-pro .portrait-frame:hover .janet-img { border-radius: 30px; }
 
-/* --- 服務卡片：清爽透亮感 --- */
+/* --- 服務卡片區 --- */
 .janet-skincare-pro .janet-service-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1269,34 +1682,20 @@
 }
 
 .janet-skincare-pro .service-item {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     padding: 50px 35px;
     border: 1px solid #f2efed;
-    transition: all 0.4s ease;
-    text-align: left;
+    transition: 0.4s;
+    border-radius: 4px;
 }
 
 .janet-skincare-pro .service-item:hover {
     background: #ffffff;
-    border-color: var(--skin-rose);
-    transform: translateY(-10px);
+    border-color: var(--skin-gold);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(212, 163, 115, 0.1);
 }
 
-.janet-skincare-pro .service-num {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.5rem;
-    color: var(--skin-rose);
-    margin-bottom: 20px;
-    display: block;
-}
-
-.janet-skincare-pro .service-item h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-}
-
-/* 按鈕按鈕 */
 .janet-skincare-pro .btn-janet-glow {
     display: inline-block;
     padding: 18px 45px;
@@ -1305,20 +1704,51 @@
     text-decoration: none;
     letter-spacing: 2px;
     transition: 0.3s;
-    border-radius: 2px;
+    font-weight: 600;
 }
 
-.janet-skincare-pro .btn-janet-glow:hover {
-    background: var(--skin-gold);
+.janet-skincare-pro .btn-janet-glow:hover { background: var(--skin-gold); transform: scale(1.05); }
+
+/* ============================================================
+   Janet 全方位 RWD 適配
+   ============================================================ */
+
+/* [1] 筆電螢幕 (1200px 以下) */
+@media (max-width: 1200px) {
+    .janet-skincare-pro .janet-hero-flex { gap: 40px; }
+    .janet-skincare-pro .janet-h1 { font-size: 3rem; }
 }
 
-/* RWD */
+/* [2] 平板螢幕 (992px 以下) */
 @media (max-width: 992px) {
+    .janet-skincare-pro .janet-hero { padding: 80px 0; }
     .janet-skincare-pro .janet-hero-flex { flex-direction: column; text-align: center; }
+    .janet-skincare-pro .janet-hero-text { display: flex; flex-direction: column; align-items: center; }
     .janet-skincare-pro .janet-badge { padding-left: 0; }
     .janet-skincare-pro .janet-badge::before { display: none; }
     .janet-skincare-pro .janet-desc { margin: 0 auto 40px; }
-    .janet-skincare-pro .janet-service-grid { grid-template-columns: 1fr; }
+    
+    .janet-skincare-pro .janet-service-grid { 
+        grid-template-columns: repeat(2, 1fr); /* 平板變兩欄 */
+    }
+}
+
+/* [3] 手機版 (768px 以下) */
+@media (max-width: 768px) {
+    .janet-skincare-pro .janet-container { padding: 0 25px; }
+    .janet-skincare-pro .janet-h1 { font-size: 2.4rem; }
+    .janet-name-display .cn { font-size: 2rem; }
+    .janet-skincare-pro .janet-service-grid { 
+        grid-template-columns: 1fr; /* 手機變一欄 */
+    }
+    .janet-skincare-pro .janet-img { height: 420px; } /* 縮小手機圖片高度 */
+    .janet-skincare-pro .portrait-frame { max-width: 320px; }
+}
+
+/* [4] 極小手機 (480px 以下) */
+@media (max-width: 480px) {
+    .janet-skincare-pro .janet-h1 { font-size: 1.8rem; }
+    .janet-skincare-pro .btn-janet-glow { width: 100%; text-align: center; }
 }
 
 
@@ -1328,43 +1758,37 @@
 
 
 /* ============================================================
-   Jhen - 繽紛活潑領航版 (Pop Minimalist - 優化間距與動態)
+   Jhen - 活力創意行銷最終版 (修正圖片大小與佈局版)
    ============================================================ */
 
 .jhen-pop-pro {
-    --pop-pink: #ff85a1;    /* 活潑粉 */
-    --pop-blue: #77d9ff;    /* 天空藍 */
-    --pop-yellow: #ffde59;  /* 陽光黃 */
-    --pop-bg: #ffffff;
-    --pop-text: #2d3436;
-    background: var(--pop-bg);
+    --pop-yellow: #ffde59;
+    --pop-pink: #ff66c4;
+    --pop-blue: #5ce1e6;
+    --pop-dark: #2d2d2d;
+    --pop-white: #ffffff;
+    background: var(--pop-white);
     font-family: 'Noto Sans TC', sans-serif;
-    position: relative;
     overflow: hidden;
+    position: relative;
+    color: var(--pop-dark);
 }
 
 .jhen-pop-pro .jhen-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 30px;
 }
 
-/* --- 背景動態點點 --- */
+/* --- 背景漂浮裝飾 --- */
 .jhen-pop-pro .pop-dot {
     position: absolute;
     border-radius: 50%;
     z-index: 0;
-    opacity: 0.6;
-    animation: popFloating 6s infinite ease-in-out;
+    opacity: 0.5;
 }
-.jhen-pop-pro .dot-1 { width: 40px; height: 40px; background: var(--pop-pink); top: 15%; left: 5%; }
-.jhen-pop-pro .dot-2 { width: 30px; height: 30px; background: var(--pop-blue); bottom: 10%; right: 5%; animation-delay: 1s; }
-.jhen-pop-pro .dot-3 { width: 50px; height: 50px; background: var(--pop-yellow); top: 50%; left: 2%; animation-delay: 2s; }
-
-@keyframes popFloating {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(20deg); }
-}
+.jhen-pop-pro .dot-1 { width: 300px; height: 300px; background: var(--pop-yellow); top: -100px; right: -100px; filter: blur(80px); }
+.jhen-pop-pro .dot-2 { width: 200px; height: 200px; background: var(--pop-blue); bottom: 10%; left: -50px; filter: blur(60px); }
 
 /* --- Hero Section --- */
 .jhen-pop-pro .jhen-hero {
@@ -1376,99 +1800,206 @@
 .jhen-pop-pro .jhen-flex {
     display: flex;
     align-items: center;
-    gap: 80px;
+    justify-content: space-between; /* 確保左右撐開 */
+    gap: 60px;
+}
+
+/* 文字區比例調整 */
+.jhen-pop-pro .jhen-content {
+    flex: 1.2; /* 稍微縮小文字佔比 */
+    min-width: 500px;
+}
+
+/* --- 名字特效 --- */
+.jhen-pop-pro .jhen-name-wrapper { margin-bottom: 35px; }
+.jhen-pop-pro .jhen-big-name { margin: 0; display: flex; flex-direction: column; gap: 5px; }
+
+.jhen-pop-pro .jhen-big-name .zh {
+    font-size: 4.8rem; /* 再次加大 */
+    font-weight: 900;
+    color: var(--pop-dark);
+    line-height: 1.1;
+    text-shadow: 6px 6px 0px var(--pop-yellow);
+}
+
+.jhen-pop-pro .jhen-big-name .en {
+    font-size: 3rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--pop-pink);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .jhen-pop-pro .jhen-vibe-tag {
-    background: var(--pop-text);
-    color: #fff;
     display: inline-block;
-    padding: 5px 15px;
-    font-weight: 900;
-    font-size: 12px;
-    border-radius: 50px;
-    margin-bottom: 25px;
-    animation: tagWiggle 2s infinite linear;
+    background: var(--pop-dark);
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    transform: rotate(-2deg);
+    box-shadow: 5px 5px 0px var(--pop-pink);
+    animation: jhenFloat 3s ease-in-out infinite;
 }
 
-@keyframes tagWiggle {
-    0%, 100% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
+@keyframes jhenFloat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
 }
 
+/* --- 主標題 --- */
 .jhen-pop-pro .jhen-h1 {
-    font-size: 4rem;
+    font-size: 3.8rem;
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.3;
     margin-bottom: 30px;
 }
 
+.jhen-pop-pro .jhen-p { margin-bottom: 40px; font-size: 1.1rem; line-height: 1.8; }
+
 .jhen-pop-pro .jhen-highlight {
     color: var(--pop-pink);
-    text-decoration: underline wavy var(--pop-yellow);
-}
-
-.jhen-pop-pro .jhen-p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #636e72;
-    max-width: 550px;
-}
-
-/* --- 按鈕區塊修正：增加間距 --- */
-.jhen-pop-pro .jhen-btn-wrap {
-    margin-top: 60px; /* 拉開與上方文字的距離 */
     position: relative;
-    z-index: 5;
+    z-index: 1;
 }
 
-/* 按鈕按鈕：強化彈力感 */
+.jhen-pop-pro .jhen-highlight::after {
+    content: "";
+    position: absolute;
+    bottom: 10%; left: 0;
+    width: 100%; height: 35%;
+    background: var(--pop-yellow);
+    z-index: -1;
+}
+
+/* --- 按鈕 --- */
 .jhen-pop-pro .btn-bounce {
     display: inline-block;
     padding: 22px 50px;
-    background: var(--pop-text);
+    background: var(--pop-pink);
     color: #fff;
     text-decoration: none;
     font-weight: 900;
+    font-size: 1.1rem;
     border-radius: 50px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 增加彈性曲線 */
-    box-shadow: 0 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 0px #d43d96;
+    transition: 0.2s;
 }
 
 .jhen-pop-pro .btn-bounce:hover {
-    background: var(--pop-pink);
-    transform: translateY(-8px) scale(1.05); /* 跳更高、變更大 */
-    box-shadow: 0 20px 30px rgba(255, 133, 161, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 0px #d43d96;
 }
 
-/* --- 圖片區與卡片部分維持原樣 --- */
-.jhen-pop-pro .jhen-avatar-group { position: relative; width: 380px; height: 380px; }
+/* --- 視覺圖片區：電腦版大幅放大修正 --- */
+.jhen-pop-pro .jhen-visual {
+    flex: 1; /* 給予獨立的空間比例 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-width: 450px; /* 確保電腦版不會縮小 */
+}
+
+.jhen-pop-pro .jhen-avatar-group {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* 調大電腦版上限 */
+}
+
 .jhen-pop-pro .jhen-photo-mask {
-    width: 100%; height: 100%; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    overflow: hidden; background: #eee; z-index: 3; position: relative;
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    border: 8px solid var(--pop-dark);
+    background: var(--pop-blue);
+    position: relative;
+    z-index: 2;
+    box-shadow: 20px 20px 0px var(--pop-yellow); /* 增加黃色硬陰影更醒目 */
 }
-.jhen-pop-pro .jhen-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.jhen-pop-pro .jhen-ring { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: inherit; z-index: 1; transition: 0.8s; }
-.jhen-pop-pro .ring-1 { border: 2px solid var(--pop-pink); transform: rotate(10deg); }
-.jhen-pop-pro .ring-2 { border: 2px solid var(--pop-blue); transform: rotate(-10deg); }
 
-.jhen-pop-pro .jhen-avatar-group:hover .jhen-photo-mask { border-radius: 50%; transform: scale(1.05) rotate(5deg); }
-.jhen-pop-pro .jhen-avatar-group:hover .jhen-ring { transform: scale(1.2) rotate(0deg); opacity: 0.3; }
+.jhen-pop-pro .jhen-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+.jhen-pop-pro .jhen-photo-mask:hover .jhen-img { transform: scale(1.15) rotate(2deg); }
 
-.jhen-pop-pro .vibe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding-bottom: 100px; }
-.jhen-pop-pro .vibe-card { padding: 40px; border-radius: 30px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 2px solid transparent; }
-.jhen-pop-pro .color-A { background: #fff5f7; border-color: var(--pop-pink); }
-.jhen-pop-pro .color-B { background: #f0faff; border-color: var(--pop-blue); }
-.jhen-pop-pro .color-C { background: #fffdf2; border-color: var(--pop-yellow); }
+/* 旋轉圓環 */
+.jhen-pop-pro .jhen-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px dashed var(--pop-dark);
+    z-index: 1;
+    animation: jhenSpin 25s linear infinite;
+}
+.jhen-pop-pro .ring-1 { width: 115%; height: 115%; top: -7.5%; left: -7.5%; }
+.jhen-pop-pro .ring-2 { width: 130%; height: 130%; top: -15%; left: -15%; border-color: var(--pop-pink); animation-direction: reverse; }
 
-.jhen-pop-pro .vibe-card:hover { transform: scale(1.05) rotate(2deg); box-shadow: 10px 10px 0px var(--pop-text); }
+@keyframes jhenSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* --- Vibe Cards 專屬動態效果 --- */
+.jhen-pop-pro .jhen-vibe-section { padding: 120px 0; background: #fafafa; }
+.jhen-pop-pro .vibe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; }
+
+.jhen-pop-pro .vibe-card {
+    padding: 60px 40px;
+    background: #ffffff;
+    border: 4px solid var(--pop-dark);
+    border-radius: 25px;
+    position: relative;
+    top: 0; left: 0;
+    box-shadow: 10px 10px 0px var(--pop-dark);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.jhen-pop-pro .vibe-card:hover {
+    top: -15px;
+    left: -8px;
+    box-shadow: 20px 20px 0px var(--pop-pink);
+    border-color: var(--pop-pink);
+}
+
+.jhen-pop-pro .vibe-icon {
+    font-size: 4rem;
+    margin-bottom: 25px;
+    display: block;
+    transition: 0.4s;
+}
+
+.jhen-pop-pro .vibe-card:hover .vibe-icon { transform: scale(1.3) rotate(15deg); }
+.jhen-pop-pro .vibe-card h3 { font-size: 1.8rem; font-weight: 900; margin-bottom: 15px; }
+.jhen-pop-pro .vibe-card p { font-size: 1.05rem; line-height: 1.6; color: #444; }
+
+.jhen-pop-pro .vibe-card.color-B { background: var(--pop-blue); }
+.jhen-pop-pro .vibe-card.color-C { background: var(--pop-yellow); }
+.jhen-pop-pro .vibe-card.color-B:hover, .jhen-pop-pro .vibe-card.color-C:hover { box-shadow: 20px 20px 0px var(--pop-dark); }
+
+/* ============================================================
+   RWD 適配修正
+   ============================================================ */
+@media (max-width: 1200px) {
+    .jhen-pop-pro .jhen-content { min-width: 400px; }
+    .jhen-pop-pro .jhen-avatar-group { max-width: 420px; }
+    .jhen-pop-pro .jhen-big-name .zh { font-size: 3.8rem; }
+}
 
 @media (max-width: 992px) {
+    .jhen-pop-pro .jhen-hero { padding: 60px 0; }
     .jhen-pop-pro .jhen-flex { flex-direction: column-reverse; text-align: center; }
+    .jhen-pop-pro .jhen-visual { min-width: auto; margin-bottom: 50px; }
+    .jhen-pop-pro .jhen-avatar-group { max-width: 380px; }
+    .jhen-pop-pro .jhen-content { min-width: 100%; }
+    .jhen-pop-pro .vibe-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .jhen-pop-pro .jhen-big-name .zh { font-size: 3rem; }
+    .jhen-pop-pro .jhen-big-name .en { font-size: 2rem; }
+    .jhen-pop-pro .jhen-h1 { font-size: 2.5rem; }
     .jhen-pop-pro .vibe-grid { grid-template-columns: 1fr; }
-    .jhen-pop-pro .jhen-h1 { font-size: 2.8rem; }
-    .jhen-pop-pro .jhen-btn-wrap { margin-top: 40px; }
 }
 
 
