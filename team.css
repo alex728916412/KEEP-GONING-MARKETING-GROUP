@@ -1540,7 +1540,7 @@
 
 
 /* ============================================================
-   Janet - 高級皮膚保養顧問版 (Skincare Aesthetics)
+   Janet - 高級皮膚保養顧問版 (Skincare Aesthetics) 修正對齊版
    ============================================================ */
 
 .janet-skincare-pro {
@@ -1561,13 +1561,17 @@
     padding: 0 40px;
 }
 
-/* --- 名字排版與標籤 --- */
+/* --- 名字排版與標籤：電腦版預設靠左 --- */
 .janet-name-block {
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 電腦版靠左 */
 }
 
 .janet-name-display {
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .janet-name-display .cn {
@@ -1591,6 +1595,7 @@
     color: var(--skin-gold);
     padding-left: 40px;
     position: relative;
+    text-align: left;
 }
 
 .janet-skincare-pro .janet-badge::before {
@@ -1621,6 +1626,7 @@
     font-size: 3.5rem;
     line-height: 1.3;
     margin-bottom: 30px;
+    text-align: left;
 }
 
 .janet-skincare-pro .text-glow { color: var(--skin-gold); }
@@ -1634,7 +1640,7 @@
     text-align: justify;
 }
 
-/* --- 圖片拱門特效 (已加入 Hover) --- */
+/* --- 圖片拱門特效 --- */
 .janet-skincare-pro .janet-visual {
     flex: 1;
     display: flex;
@@ -1710,42 +1716,46 @@
 .janet-skincare-pro .btn-janet-glow:hover { background: var(--skin-gold); transform: scale(1.05); }
 
 /* ============================================================
-   Janet 全方位 RWD 適配
+   Janet 全方位 RWD 適配 (包含名字對齊切換)
    ============================================================ */
 
-/* [1] 筆電螢幕 (1200px 以下) */
 @media (max-width: 1200px) {
     .janet-skincare-pro .janet-hero-flex { gap: 40px; }
     .janet-skincare-pro .janet-h1 { font-size: 3rem; }
 }
 
-/* [2] 平板螢幕 (992px 以下) */
 @media (max-width: 992px) {
     .janet-skincare-pro .janet-hero { padding: 80px 0; }
     .janet-skincare-pro .janet-hero-flex { flex-direction: column; text-align: center; }
     .janet-skincare-pro .janet-hero-text { display: flex; flex-direction: column; align-items: center; }
-    .janet-skincare-pro .janet-badge { padding-left: 0; }
+    
+    /* --- 核心修正：名字手機版居中 --- */
+    .janet-name-block { align-items: center; }
+    .janet-name-display { text-align: center; }
+    .janet-name-display .cn { margin-right: 0; display: block; margin-bottom: 5px; }
+    
+    .janet-skincare-pro .janet-badge { padding-left: 0; text-align: center; }
     .janet-skincare-pro .janet-badge::before { display: none; }
+    
+    .janet-skincare-pro .janet-h1 { text-align: center; }
     .janet-skincare-pro .janet-desc { margin: 0 auto 40px; }
     
     .janet-skincare-pro .janet-service-grid { 
-        grid-template-columns: repeat(2, 1fr); /* 平板變兩欄 */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* [3] 手機版 (768px 以下) */
 @media (max-width: 768px) {
     .janet-skincare-pro .janet-container { padding: 0 25px; }
     .janet-skincare-pro .janet-h1 { font-size: 2.4rem; }
     .janet-name-display .cn { font-size: 2rem; }
     .janet-skincare-pro .janet-service-grid { 
-        grid-template-columns: 1fr; /* 手機變一欄 */
+        grid-template-columns: 1fr;
     }
-    .janet-skincare-pro .janet-img { height: 420px; } /* 縮小手機圖片高度 */
+    .janet-skincare-pro .janet-img { height: 420px; }
     .janet-skincare-pro .portrait-frame { max-width: 320px; }
 }
 
-/* [4] 極小手機 (480px 以下) */
 @media (max-width: 480px) {
     .janet-skincare-pro .janet-h1 { font-size: 1.8rem; }
     .janet-skincare-pro .btn-janet-glow { width: 100%; text-align: center; }
@@ -1811,8 +1821,20 @@
 }
 
 /* --- 名字特效 --- */
-.jhen-pop-pro .jhen-name-wrapper { margin-bottom: 35px; }
-.jhen-pop-pro .jhen-big-name { margin: 0; display: flex; flex-direction: column; gap: 5px; }
+.jhen-pop-pro .jhen-name-wrapper { 
+    margin-bottom: 35px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 電腦版強制靠左 */
+}
+
+.jhen-pop-pro .jhen-big-name { 
+    margin: 0; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+    text-align: left; /* 電腦版文字靠左 */
+}
 
 .jhen-pop-pro .jhen-big-name .zh {
     font-size: 4.8rem; /* 再次加大 */
@@ -1993,6 +2015,30 @@
     .jhen-pop-pro .jhen-avatar-group { max-width: 380px; }
     .jhen-pop-pro .jhen-content { min-width: 100%; }
     .jhen-pop-pro .vibe-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 992px) {
+    /* 在平板與手機版，將名字容器改為居中 */
+    .jhen-pop-pro .jhen-name-wrapper {
+        align-items: center; 
+        text-align: center;
+    }
+
+    .jhen-pop-pro .jhen-big-name {
+        text-align: center; /* 確保中英文文字皆置中 */
+    }
+
+    /* 調整標籤的動畫基準點，確保旋轉時視覺穩定 */
+    .jhen-pop-pro .jhen-vibe-tag {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 針對手機版進一步優化字級，避免字體過大導致溢出 */
+    .jhen-pop-pro .jhen-big-name .zh { font-size: 3.2rem; }
+    .jhen-pop-pro .jhen-big-name .en { font-size: 2rem; }
 }
 
 @media (max-width: 768px) {
