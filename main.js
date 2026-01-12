@@ -96,6 +96,59 @@ setInterval(() => {
 }, 3000);
 
 
+// parallax效果
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const bg = document.getElementById('parallax-bg');
+    
+    if (scrolled < window.innerHeight) {
+        // 1. 圖片緩慢下沉 (速度 0.3)
+        bg.style.transform = `translateY(${scrolled * 0.3}px)`;
+        
+        // 2. 圖片緩慢變暗 (視覺引導到下方的白色內容區)
+        bg.style.filter = `brightness(${1 - scrolled / 1000})`;
+    }
+});
 
+
+// Swiper 初始化
+// main.js (參考 Frontend Joe 的邏輯優化版)
+document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.team-swiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        speed: 1000,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 150,
+            modifier: 2.5,
+            slideShadows: false
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+        on: {
+            resize: function () {
+                if (window.innerWidth < 768) {
+                    this.params.coverflowEffect.modifier = 2;
+                } else {
+                    this.params.coverflowEffect.modifier = 2.5;
+                }
+                this.update();
+            },
+        }
+    });
+});
 
 

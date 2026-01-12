@@ -1,4 +1,263 @@
 /* TEAM */
+/* --- 1. 整體頁面容器 --- */
+.team-page {
+    /* 徑向漸層：中心點較亮，向外擴散至深色 */
+    background: radial-gradient(circle at center, #1e293b 0%, #0b0f1a 80%);
+    padding: 100px 0;
+    color: #ffffff;
+    overflow: hidden;
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* --- 標題與副標題 (新增動畫) --- */
+.section-title, .section-subtitle {
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+    animation-delay: 0.3s; /* 讓標題稍微延遲出現 */
+}
+
+.section-subtitle {
+    animation-delay: 0.5s;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 60px;
+}
+
+/* --- 2. Swiper 容器 --- */
+.team-swiper {
+    width: 100%;
+    padding: 50px 0 100px !important;
+    overflow: visible !important; 
+}
+
+/* --- 3. 卡片主體 (修正：徹底移除所有邊隔與背景) --- */
+.team-card {
+    position: relative;
+    width: 320px !important;
+    height: 480px !important;
+    border-radius: 20px;
+    overflow: hidden; 
+    padding: 0 !important; 
+    margin: 0 !important;
+    border: none !important; 
+    cursor: pointer;
+    
+    /* 未選中狀態特效 */
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.4;
+    filter: grayscale(1) blur(2px);
+    transform: scale(0.8);
+    /* 新增：卡片邊緣呼吸光 */
+    box-shadow: 0 0 0 rgba(255,255,255,0); /* 預設無光暈 */
+}
+
+/* --- 4. 焦點卡片 (新增動畫) --- */
+.swiper-slide-active {
+    opacity: 1 !important;
+    filter: grayscale(0) blur(0) !important;
+    transform: scale(1.05) !important; /* 焦點卡片放大，視覺張力更強 */
+    z-index: 10;
+    /* 新增：焦點卡片邊框光暈 */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 0 60px rgba(0, 0, 0, 0.8);
+}
+
+/* --- 5. 滿版背景圖片 (新增動畫) --- */
+.card-bg {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center 15%;
+    z-index: 1; 
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* 圖片縮放動畫 */
+}
+
+/* 新增：滑鼠移入卡片時，圖片微放大 */
+.team-card:hover .card-bg {
+    transform: scale(1.03); 
+}
+
+/* --- 6. 文字內容 (壓在圖片上方，新增動畫) --- */
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    padding: 40px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    z-index: 2; 
+    
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.2s;
+}
+
+.swiper-slide-active .card-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 確保文字不會因為其他 CSS 而變色 */
+.team-card .card-content .text-wrap h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #ffffff !important; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    letter-spacing: 0.5px;
+}
+
+.team-card .card-content .text-wrap p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9) !important; 
+    margin-bottom: 20px;
+}
+
+/* --- 7. Explore 按鈕 (新增動畫) --- */
+.explore-btn {
+    /* 1. 使用 Flexbox 達成絕對置中 */
+    display: inline-flex;       /* 改為 inline-flex */
+    align-items: center;        /* 垂直置中 */
+    justify-content: center;    /* 水平置中 */
+    
+    /* 2. 調整 Padding：建議高度不要只靠 padding 撐，可以給一個寬度 */
+    padding: 12px 32px;         /* 垂直改小，水平保持 32px */
+    min-width: 140px;           /* 設定最小寬度，讓按鈕看起來更專業 */
+    height: 45px;               /* 明確設定高度 */
+    
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;             /* 強制行高為 1，避免字體自帶空間干擾 */
+    
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.explore-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;          /* 填充白色 */
+    transform: scaleX(0);         
+    transform-origin: right;      
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.team-card:hover .explore-btn {
+    border-color: #ffffff; /* 卡片移入時按鈕邊框變實 */
+}
+
+.team-card:hover .explore-btn::before {
+    transform: scaleX(1);         
+    transform-origin: left;       
+}
+
+.team-card:hover .explore-btn {
+    color: #0b0f1a !important;    /* 移入時文字變深藍色/黑色 */
+}
+
+
+/* --- 8. 分頁點樣式 --- */
+.swiper-pagination-bullet { 
+    background: #fff !important; 
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active { 
+    opacity: 1; 
+    width: 25px !important;
+    border-radius: 5px;
+}
+
+/* --- 9. RWD 響應式設定 --- */
+@media screen and (max-width: 1024px) {
+    .section-title { font-size: 2.2rem; }
+    .team-card { width: 280px !important; height: 420px !important; }
+}
+
+@media screen and (max-width: 768px) {
+    .team-page { padding: 60px 0; }
+    .section-title { font-size: 1.8rem; margin-bottom: 5px; }
+    .section-subtitle { font-size: 0.95rem; margin-bottom: 30px; padding: 0 15px; }
+    .team-card { width: 240px !important; height: 360px !important; border-radius: 15px; }
+    .card-content { padding: 25px 15px; height: 60%; }
+    .team-card .card-content .text-wrap h3 { font-size: 1.2rem; margin-bottom: 4px; }
+    .team-card .card-content .text-wrap p { font-size: 0.85rem; margin-bottom: 15px; }
+    .explore-btn { padding: 6px 18px; font-size: 0.7rem; }
+    .team-swiper { padding: 30px 0 60px !important; }
+    .swiper-pagination { bottom: 10px !important; }
+}
+
+@media screen and (max-width: 480px) {
+    .team-card { width: 200px !important; height: 300px !important; }
+    .section-title { font-size: 1.5rem; }
+    .team-card .card-content .text-wrap h3 { font-size: 1.1rem; }
+    .swiper-pagination-bullet { width: 6px; height: 6px; }
+    .swiper-pagination-bullet-active { width: 15px; }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .team-card { height: 250px !important; width: 180px !important; }
+    .team-page { padding: 30px 0; }
+}
+
+/* --- 10. 全局 Keyframes 動畫 --- */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   TEAM PAGE - 基本卡片樣式
+   ============================================================ */
+
+
 /* --- 核心結構樣式 --- */
 
 .team-page {

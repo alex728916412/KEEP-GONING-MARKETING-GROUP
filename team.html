@@ -1,125 +1,135 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KEEP GONING Marketing Group</title>
-<link rel="stylesheet" href="css.css">
-<link rel="stylesheet" href="team.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顧問級團隊 | KEEP GOING Marketing Group</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="team.css">
 </head>
 <body>
 
 <header>
-  <div class="nav">
-    <a class="logo" href="index.html">KEEP GOING Marketing Group</a>
-    
-    <button class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    
-    <ul class="nav-links" id="navLinks">
-      <a href="index.html">首頁</a>
-      <a href="index.html#video-library">影片</a>
-      <a href="index.html#services">服務</a>
-      <a href="team.html">團隊</a></li>
-      <a href="index.html#trust">回饋</a>
-      <a href="index.html#contact">聯絡</a>
-      <a href="https://tw.shop.com" target="_blank" rel="noopener noreferrer">前往商城</a>
-      <a href="group.html" onclick="goTeamZone()">團隊專區</a>
-      <button id="logoutBtn">登出</button>
-    </ul>
-  </div>
+    <div class="nav">
+        <a class="logo" href="index.html">KEEP GOING Marketing Group</a>
+        <button class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <a href="index.html">首頁</a>
+            <a href="index.html#video-library">影片</a>
+            <a href="index.html#services">服務</a>
+            <a href="team.html">團隊</a>
+            <a href="index.html#trust">回饋</a>
+            <a href="index.html#contact">聯絡</a>
+            <a href="https://tw.shop.com" target="_blank">前往商城</a>
+            <a href="group.html">團隊專區</a>
+            <button id="logoutBtn">登出</button>
+        </ul>
+    </div>
 </header>
 
-
-<main>
-<div class="slider">
-  <div class="slides">
-    <div class="banner-wrap"><img src="001.png" alt="banner1"></div>
-    
-    <div class="banner-wrap"> 
-      <a href="https://www.eslite.com/product/10022013352682661823006?attr=hAHwgwoLCL_KzsoGEPD2q1cQARokNjlkZDY1NzYtMDAwMC0yYTY5LTk0MjItM2MyODZkMzVmYTQyKgExMjCo5aotwvCeFdSynRWOvp0VmNa3LZvWty23t4wtjpHJMMeW8DCOwI83yZbwMJD3sjA6DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJ0aw" target="_blank">
-      <img src="3.png" alt="banner2">
-    </a></div>
-    <!-- 關鍵：多放一張與第一張一樣的圖，用來做無縫轉場 -->
-    
-    <div class="banner-wrap"><img src="001.png" alt="banner1"></div>
+<div class="parallax-container">
+  <div class="slider" id="parallax-bg">
+    <div class="slides">
+      <div class="banner-wrap"><img src="001.png" alt="banner1"></div>
+      <div class="banner-wrap"> 
+        <a href="https://www.eslite.com/product/10022013352682661823006?attr=hAHwgwoLCL_KzsoGEPD2q1cQARokNjlkZDY1NzYtMDAwMC0yYTY5LTk0MjItM2MyODZkMzVmYTQyKgExMjCo5aotwvCeFdSynRWOvp0VmNa3LZvWty23t4wtjpHJMMeW8DCOwI83yZbwMJD3sjA6DmRlZmF1bHRfc2VhcmNoSAFYAWgBegJ0aw" target="_blank"><img src="3.png" alt="banner2"></a>
+      </div>
+      <div class="banner-wrap"><img src="001.png" alt="banner1"></div>
+    </div>
   </div>
 </div>
 
-<section id="team" class="team-page">
-  <div class="container">
-    <h2 class="section-title">顧問級團隊</h2>
-    <p class="section-subtitle">每個領域，都有對的人負責</p>
+<main>
+    <section id="team" class="team-page">
+        <div class="container">
+            <h1 class="section-title">顧問級團隊</h1>
+            <p class="section-subtitle">每個領域，都有對的人負責</p>
 
-    <div class="grid">
-      <div class="card team-card carl" onclick="location.href='Carl.html'">
-        <div class="avatar">
-          <img src="Carl.jpg" alt="黃小秦" class="avatar-img">
+            <div class="swiper team-swiper">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide team-card" onclick="location.href='Carl.html'">
+                        <img src="Carl.jpg" alt="Carl Huang" class="card-bg">
+                        <div class="card-content">
+                            <div class="text-wrap">
+                                <h3>黃小秦 Carl Huang</h3>
+                                <p>財務規劃與品牌佈局</p>
+                            </div>
+                            <span class="explore-btn">Explore</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide team-card" onclick="location.href='Janet.html'">
+                        <img src="Janet.jpg" alt="Janet Wang" class="card-bg">
+                        <div class="card-content">
+                            <div class="text-wrap">
+                                <h3>王千勻 Janet Wang</h3>
+                                <p>肌膚美學管理</p>
+                            </div>
+                            <span class="explore-btn">Explore</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide team-card" onclick="location.href='Alex.html'">
+                        <img src="Alex.jpg" alt="Alex Wang" class="card-bg">
+                        <div class="card-content">
+                            <div class="text-wrap">
+                                <h3>王力申 Alex Wang</h3>
+                                <p>網站設計與策略規劃</p>
+                            </div>
+                            <span class="explore-btn">Explore</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide team-card" onclick="location.href='Austin.html'">
+                        <img src="Austin.jpg" alt="Austin Yeh" class="card-bg">
+                        <div class="card-content">
+                            <div class="text-wrap">
+                                <h3>葉哲熙 Austin Yeh</h3>
+                                <p>行銷策略經理</p>
+                            </div>
+                            <span class="explore-btn">Explore</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide team-card" onclick="location.href='Ben.html'">
+                        <img src="Ben.jpg" alt="Ben Wu" class="card-bg">
+                        <div class="card-content">
+                            <div class="text-wrap">
+                                <h3>吳信諄 Ben Wu</h3>
+                                <p>資深行銷策略經理</p>
+                            </div>
+                            <span class="explore-btn">Explore</span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide team-card" onclick="location.href='Jhen.html'">
+                        <img src="Jhen.jpg" alt="Jhen Chen" class="card-bg">
+                        <div class="card-content">
+                            <div class="text-wrap">
+                                <h3>陳鈺蓁 Jhen Chen</h3>
+                                <p>行銷助理</p>
+                            </div>
+                            <span class="explore-btn">Explore</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
-        <h3>黃小秦 Carl Haung</h3>
-        <p>財務規劃與品牌佈局</p>
-      </div>
-
-      <div class="card team-card janet" onclick="location.href='Janet.html'">
-        <div class="avatar">
-          <img src="Janet.jpg" alt="王千勻" class="avatar-img">
-        </div>
-        <h3>王千勻 Janet Wang</h3>
-        <p>肌膚美學管理</p>
-      </div>
-
-      <div class="card team-card alex" onclick="location.href='Alex.html'">
-        <div class="avatar">
-          <img src="Alex.jpg" alt="王力申" class="avatar-img">
-        </div>
-        <h3>王力申 Alex Wang</h3>
-        <p>網站設計與策略規劃</p>
-      </div>
-
-      <div class="card team-card austin" onclick="location.href='Austin.html'">
-        <div class="avatar">
-          <img src="Austin.jpg" alt="葉哲熙" class="avatar-img">
-        </div>
-        <h3>葉哲熙 Austin Yeh</h3>
-        <p>行銷策略經理</p>
-      </div>
-
-      <div class="card team-card ben" onclick="location.href='Ben.html'">
-        <div class="avatar">
-          <img src="Ben.jpg" alt="吳信諄" class="avatar-img">
-        </div>
-        <h3>吳信諄 Ben Wu</h3>
-        <p>資深行銷策略經理</p>
-      </div>
-
-      <div class="card team-card jhen" onclick="location.href='Jhen.html'">
-        <div class="avatar">
-          <img src="Jhen.jpg" alt="陳鈺蓁" class="avatar-img">
-        </div>
-        <h3>陳鈺蓁 Jhen Chen</h3>
-        <p>行銷助理</p>
-      </div>
-    </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
+    </section>
+</main>
 
 <footer>
-  © 2025 Strategic Marketing Group ｜ 專業行銷顧問團隊
+    © 2025 Strategic Marketing Group ｜ 專業行銷顧問團隊
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="main.js"></script>
-
-
-
 
 </body>
 </html>
