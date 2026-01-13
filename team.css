@@ -3,8 +3,8 @@
 .team-page {
     /* 淡淡的米白色，與白色膠囊導覽列能產生高級的對比 */
     background-color: #eee1c9 !important; 
-    padding: 100px 0;
-    color: #2c3e50;
+    padding: 80px 60px 120px;
+    margin: -100px 0 0 ; /* 讓頁面頂部往上吸，蓋住 Banner 底部 */
     border-top: 1px solid #f1ece1;
     border-radius: 40px 40px 0 0 ;
 }
