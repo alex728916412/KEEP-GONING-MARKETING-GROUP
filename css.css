@@ -26,7 +26,7 @@ html, body {
 /* --- 1. 電腦版 (Desktop) --- */
 .parallax-container {
     position: relative;
-    height: 80vh;        /* 電腦版從 85 縮短到 70，減少下方空洞 */
+    height: 100vh;        /* 電腦版從 85 縮短到 70，減少下方空洞 */
     overflow: hidden;
     background: #fff;    /* 黑色底改為白色，這樣就算有空隙也不會是黑色的 */
 }
@@ -699,7 +699,7 @@ header {
 
 
 /* SECTION */
-section { padding:80px 24px; }
+.section { padding:80px 24px; }
 .section-bg { background:#f0f4f8; }
 .section-bg-alt { background:#ffffff; }
 .container { max-width:1200px; margin:auto; text-align:center; }
