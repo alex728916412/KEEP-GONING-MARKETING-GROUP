@@ -19,39 +19,87 @@ html, body {
 
 
 
-/* parallax樣式 */
-/* 1. 視差英雄區容器 */
-/* 讓 Banner 區塊成為一個獨立視口 */
+/* ============================================================
+   Parallax & Services 重疊區塊 RWD 方案
+   ============================================================ */
+
+/* --- 1. 電腦版 (Desktop) --- */
 .parallax-container {
     position: relative;
-    height: 85vh; /* 稍微縮短一點，讓使用者能看到下方內容的頭 */
+    height: 80vh;        /* 電腦版從 85 縮短到 70，減少下方空洞 */
     overflow: hidden;
-    background: #000;
+    background: #fff;    /* 黑色底改為白色，這樣就算有空隙也不會是黑色的 */
 }
 
-#parallax-bg {
-    width: 100%;
+.banner-wrap, .slides, #parallax-bg {
     height: 100%;
-    will-change: transform;
-    transition: transform 0.1s ease-out; /* 讓移動更滑順 */
 }
 
 .banner-wrap img {
     width: 100%;
-    height: 70vh;
-    object-fit: cover; /* 確保圖片不變形 */
-    display: block;
+    height: 100%;
+    object-fit: cover;   /* 確保圖片鋪滿整個 70vh 區域 */
 }
 
-/* 下方服務區塊：加強陰影，做出「蓋過」Banner 的感覺 */
 #services {
     position: relative;
     z-index: 10;
     background: #ffffff;
-    margin-top: -50px; /* 關鍵：讓內容稍微吃進 Banner 區塊，增加層次 */
-    border-radius: 40px 40px 0 0; /* 圓角會讓視差過渡更柔和 */
-    box-shadow: 0 -20px 40px rgba(0,0,0,0.2);
-    padding-top: 60px;
+    
+    /* 這裡加深重疊度，讓下方內容直接覆蓋到 Banner 的下緣 */
+    margin-top: -120px;  /* 從 -50px 改為 -120px (視情況調整) */
+    
+    border-radius: 60px 60px 0 0;
+    padding-top: 60px;   /* 內部的文字不要貼頂 */
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.1);
+}
+
+/* --- 2. 平板版 (Tablet: 1024px 以下) --- */
+@media (max-width: 1024px) {
+    .parallax-container {
+        height: 50vh; /* 平板稍微縮短，平衡視覺 */
+    }
+
+    #services {
+        margin-top: -80px; /* 重疊稍微減少 */
+        border-radius: 40px 40px 0 0;
+        padding: 60px 20px;
+    }
+}
+
+/* --- 3. 手機版 (Mobile: 768px 以下) --- */
+@media (max-width: 768px) {
+    .parallax-container {
+        height: 40vh; /* 手機版不可太長，否則首屏看不到內容 */
+    }
+
+    #services {
+        margin-top: -40px; /* 手機版重疊淺一點，避免遮擋人物 */
+        border-radius: 30px 30px 0 0;
+        padding-top: 40px;
+    }
+
+    /* 確保手機版圖片中心點對齊，避免重要內容被裁切 */
+    .banner-wrap img {
+        object-position: center 20%; 
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+}
+
+/* --- 4. 小手機 (Small Mobile: 480px 以下) --- */
+@media (max-width: 480px) {
+    .parallax-container {
+        height: 40vh;
+    }
+    
+    #services {
+        margin-top: -20px;
+        padding: 30px 15px;
+    }
 }
 
 
@@ -77,72 +125,301 @@ a {
 }
 
 /* NAVBAR */
+/* ============================================================
+   KEEP GOING 精緻膠囊導覽列 (白色版)
+   ============================================================ */
+
+/* 1. 導覽列外部容器 */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: fixed;
+    top: 20px; 
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    
+    /* 關鍵：確保這裡沒有任何背景、陰影或邊框 */
+    background: transparent !important; 
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: none !important; 
+    box-shadow: none !important;
 }
 
+.header-scrolled .nav {
+    top: 10px;
+    height: 58px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
 
+/* 滾動時，如果想讓 header 貼頂，可以用 JS 切換 class，或是保持懸浮 */
+
+/* 2. 膠囊主體 */
 .nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 72px;               /* 🔥 鎖死高度 */
-  padding: 0 24px;
-  display: flex;
-  align-items: center;        /* 垂直真正置中 */
-  justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 56px;
+    padding: 0 32px;
+    background: #ffffff; /* 實色純白 */
+    border: 1px solid #e2e8f0; 
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%; /* 讓膠囊左右留白 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* 讓膠囊浮起來 */
 }
 
-
-
+/* 3. Logo 樣式 */
 .logo {
-  font-weight: 700;
-  color: #0f172a;
-  text-decoration: none;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  height: 40px;     /* 🔥 跟右邊選單一致 */
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    margin-left: 0 !important; /* 修正原本 CSS 的 margin */
 }
 
-
-.nav a { 
-  margin-left:24px; 
-  font-weight:500; 
-  color:#334155; 
-  transition:color 0.3s;
- }
-.nav a:hover { 
-  color:var(--accent);
- }
-
- .nav {
-  position: relative;
+.logo span {
+    color: #3b82f6;
 }
 
+/* 4. 選單列表 */
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
 }
 
 .nav-links a {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  font-size: 0.95rem;
-  color: #0f172a;
-  text-decoration: none;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #475569;
+    transition: all 0.3s ease;
+    margin-left: 0 !important; /* 蓋掉舊樣式 */
+}
+
+.nav-links a:hover {
+    color: #3b82f6;
+}
+
+/* 5. 整合「解決方案」下拉選單 */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #ffffff; /* 純白 */
+    min-width: 160px;
+    border-radius: 12px;
+    padding: 8px 0;
+    margin: 0;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    list-style: none;
+    overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+    list-style: none;
+}
+
+/* 3. 連結標籤：控制字體置中 */
+.dropdown-menu li a {
+    display: flex;          /* 使用 Flexbox */
+    align-items: center;    /* 垂直置中 */
+    justify-content: center; /* 水平置中（如果你希望文字在正中間） */
+    
+    padding: 12px 20px;
+    color: #334155;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    text-align: center;     /* 保險起見加上文字置中 */
+}
+
+/* 4. 滑鼠移入效果 */
+.dropdown-menu li a:hover {
+    background-color: #f1f5f9;
+    color: #3b82f6;
+}
+
+/* 6. 右側動作區塊 */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 團隊專區按鈕 */
+.nav-btn-fill {
+    height: 40px;
+    padding: 0 20px;
+    background: #0f172a;
+    color: #fff !important;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.nav-btn-fill:hover {
+    background: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* 登出按鈕 */
+#logoutBtn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s;
+}
+
+#logoutBtn:hover {
+    color: #ef4444;
+}
+
+/* 7. 漢堡選單按鈕 */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 2px;
+    background: #0f172a;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* =========================
+   手機版 RWD 邏輯
+========================= */
+
+@media (max-width: 1024px) {
+    .nav {
+        padding: 0 20px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none; /* 預設隱藏 */
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border: 1px solid #e2e8f0;
+        gap: 0;
+    }
+
+    .nav-links li a:active,
+    .nav-links li a:focus {
+        transform: none !important;
+
+    }
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li.dropdown {
+      position: static;
+      width: 100%;
+    }
+
+    .nav-links a {
+        width: 100%;
+        height: 50px;
+        padding: 0 20px;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    /* 手機版下拉選單改為靜態 */
+    .nav-links .dropdown-menu {
+        display: none;       /* 預設隱藏 */
+        position: static;    /* 關鍵：改為靜態定位，不重疊 */
+        transform: none !important; /* 徹底移除電腦版的位移與縮放 */
+        opacity: 1 !important;      /* 手機版不需要透明度過渡 */
+        visibility: visible !important;
+        width: 100%;
+        box-shadow: none;    /* 移除陰影避免視覺雜亂 */
+        background: #f1f5f9; /* 給子選單一個淡灰色底，增加層次感 */
+        margin: 0;
+        padding: 0;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown.active .arrow-down {
+        transform: rotate(180deg);
+    }
+    
+    .dropdown-menu li a {
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #e2e8f0;
+      background: transparent !important; /* 防止點擊時背景色亂跑 */
+    }
+    .nav-actions {
+        width: 100%;
+        flex-direction: column;
+        padding-top: 15px;
+        gap: 10px;
+    }
+
+    .nav-btn-fill {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 

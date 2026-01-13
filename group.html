@@ -16,27 +16,35 @@ if (localStorage.getItem("auth") !== "true") {
 
 
 <header>
-  <div class="nav">
-    <a class="logo" href="index.html">KEEP GOING Marketing Group</a>
+  <nav class="nav">
+    <a class="logo" href="index.html">KEEP GOING<span>.</span></a>
     
     <button class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
     
     <ul class="nav-links" id="navLinks">
-      <a href="index.html">首頁</a>
-      <a href="index.html#video-library">影片</a>
-      <a href="index.html#services">服務</a>
-      <a href="team.html">團隊</a></li>
-      <a href="index.html#trust">回饋</a>
-      <a href="index.html#contact">聯絡</a>
-      <a href="https://tw.shop.com" target="_blank" rel="noopener noreferrer">前往商城</a>
-      <a href="group.html" onclick="goTeamZone()">團隊專區</a>
-      <button id="logoutBtn">登出</button>
+      <li><a href="index.html">首頁</a></li>
+      
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropdown-trigger">行銷方案</a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html#services">服務項目</a></li>
+        <li><a href="index.html#video-library">影音作品</a></li>
+      </ul>
+    </li>
+
+      <li><a href="team.html">團隊</a></li>
+      <li><a href="index.html#trustme">回饋</a></li>
+      <li><a href="index.html#contact">聯絡</a></li>
+      
+      <div class="nav-actions">
+        <a href="https://tw.shop.com" target="_blank" class="nav-btn-outline">前往商城</a>
+        <a href="group.html" class="nav-btn-fill">團隊專區</a>
+        <button id="logoutBtn" class="logout-link">登出</button>
+      </div>
     </ul>
-  </div>
+  </nav>
 </header>
 
 

@@ -152,3 +152,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// navbar 效果
+document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.querySelector('.dropdown-trigger');
+    const dropdown = document.querySelector('.dropdown');
+
+    trigger.addEventListener('click', function(e) {
+        if (window.innerWidth <= 1024) {
+            e.preventDefault(); // 阻止 <a> 連結跳轉
+            e.stopPropagation(); // 阻止事件冒泡到 header 或 body
+            dropdown.classList.toggle('active');
+        }
+    });
+});
