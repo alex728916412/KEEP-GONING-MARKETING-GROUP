@@ -160,8 +160,8 @@ header {
 /* 滾動時，如果想讓 header 貼頂，可以用 JS 切換 class，或是保持懸浮 */
 
 /* 2. 膠囊主體 */
-.nav {
-    max-width: 1200px;
+header .nav {
+    max-width: 1500px;
     margin: 0 auto;
     height: 56px;
     padding: 0 32px;
@@ -1260,6 +1260,7 @@ section {
     aspect-ratio: 16 / 9; /* 在手機上顯示稍微高一點的比例 */
   }
 }
+
 
 
 
