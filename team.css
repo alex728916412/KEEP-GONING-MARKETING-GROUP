@@ -6,7 +6,7 @@
     padding: 80px 60px 120px;
     margin: -100px 0 0 ; /* 讓頁面頂部往上吸，蓋住 Banner 底部 */
     border-top: 1px solid #f1ece1;
-    border-radius: 40px 40px 0 0 ;
+    border-radius: 150px 150px 0 0 ;
 }
 
 /* 增加一個裝飾性的淡色圓形在背景，增加層次感 */
@@ -2045,282 +2045,125 @@
    Jhen - 活力創意行銷最終版 (修正圖片大小與佈局版)
    ============================================================ */
 
+/* --- Jhen Editorial Final All-in-One --- */
+
 .jhen-pop-pro {
-    --pop-yellow: #ffde59;
-    --pop-pink: #ff66c4;
-    --pop-blue: #5ce1e6;
-    --pop-dark: #2d2d2d;
-    --pop-white: #ffffff;
-    background: var(--pop-white);
-    font-family: 'Noto Sans TC', sans-serif;
+    background: #ffffff !important;
+    color: #111111;
+    font-family: "Georgia", "PingFang TC", serif;
     overflow: hidden;
     position: relative;
-    color: var(--pop-dark);
+    padding-bottom: 120px;
 }
 
-.jhen-pop-pro .jhen-container {
-    max-width: 1200px;
+.jhen-container {
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 40px;
 }
 
-/* --- 背景漂浮裝飾 --- */
-.jhen-pop-pro .pop-dot {
-    position: absolute;
-    border-radius: 50%;
-    z-index: 0;
-    opacity: 0.5;
-}
-.jhen-pop-pro .dot-1 { width: 300px; height: 300px; background: var(--pop-yellow); top: -100px; right: -100px; filter: blur(80px); }
-.jhen-pop-pro .dot-2 { width: 200px; height: 200px; background: var(--pop-blue); bottom: 10%; left: -50px; filter: blur(60px); }
-
-/* --- Hero Section --- */
-.jhen-pop-pro .jhen-hero {
-    padding: 100px 0;
-    position: relative;
-    z-index: 1;
-}
-
-.jhen-pop-pro .jhen-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* 確保左右撐開 */
-    gap: 60px;
-}
-
-/* 文字區比例調整 */
-.jhen-pop-pro .jhen-content {
-    flex: 1.2; /* 稍微縮小文字佔比 */
-    min-width: 500px;
-}
-
-/* --- 名字特效 --- */
-.jhen-pop-pro .jhen-name-wrapper { 
-    margin-bottom: 35px; 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* 電腦版強制靠左 */
-}
-
-.jhen-pop-pro .jhen-big-name { 
-    margin: 0; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 5px; 
-    text-align: left; /* 電腦版文字靠左 */
-}
-
-.jhen-pop-pro .jhen-big-name .zh {
-    font-size: 4.8rem; /* 再次加大 */
-    font-weight: 900;
-    color: var(--pop-dark);
-    line-height: 1.1;
-    text-shadow: 6px 6px 0px var(--pop-yellow);
-}
-
-.jhen-pop-pro .jhen-big-name .en {
-    font-size: 3rem;
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 2px var(--pop-pink);
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    line-height: 1;
-}
-
-.jhen-pop-pro .jhen-vibe-tag {
-    display: inline-block;
-    background: var(--pop-dark);
-    color: #fff;
-    padding: 10px 22px;
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-top: 25px;
-    transform: rotate(-2deg);
-    box-shadow: 5px 5px 0px var(--pop-pink);
-    animation: jhenFloat 3s ease-in-out infinite;
-}
-
-@keyframes jhenFloat {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-10px) rotate(1deg); }
-}
-
-/* --- 主標題 --- */
-.jhen-pop-pro .jhen-h1 {
-    font-size: 3.8rem;
-    font-weight: 900;
-    line-height: 1.3;
-    margin-bottom: 30px;
-}
-
-.jhen-pop-pro .jhen-p { margin-bottom: 40px; font-size: 1.1rem; line-height: 1.8; }
-
-.jhen-pop-pro .jhen-highlight {
-    color: var(--pop-pink);
-    position: relative;
-    z-index: 1;
-}
-
-.jhen-pop-pro .jhen-highlight::after {
-    content: "";
-    position: absolute;
-    bottom: 10%; left: 0;
-    width: 100%; height: 35%;
-    background: var(--pop-yellow);
-    z-index: -1;
-}
-
-/* --- 按鈕 --- */
-.jhen-pop-pro .btn-bounce {
-    display: inline-block;
-    padding: 22px 50px;
-    background: var(--pop-pink);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 900;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    box-shadow: 0 8px 0px #d43d96;
-    transition: 0.2s;
-}
-
-.jhen-pop-pro .btn-bounce:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 0px #d43d96;
-}
-
-/* --- 視覺圖片區：電腦版大幅放大修正 --- */
-.jhen-pop-pro .jhen-visual {
-    flex: 1; /* 給予獨立的空間比例 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    min-width: 450px; /* 確保電腦版不會縮小 */
-}
-
-.jhen-pop-pro .jhen-avatar-group {
-    position: relative;
-    width: 100%;
-    max-width: 500px; /* 調大電腦版上限 */
-}
-
-.jhen-pop-pro .jhen-photo-mask {
-    width: 100%;
-    aspect-ratio: 1;
-    overflow: hidden;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    border: 8px solid var(--pop-dark);
-    background: var(--pop-blue);
-    position: relative;
-    z-index: 2;
-    box-shadow: 20px 20px 0px var(--pop-yellow); /* 增加黃色硬陰影更醒目 */
-}
-
-.jhen-pop-pro .jhen-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
-.jhen-pop-pro .jhen-photo-mask:hover .jhen-img { transform: scale(1.15) rotate(2deg); }
-
-/* 旋轉圓環 */
-.jhen-pop-pro .jhen-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 4px dashed var(--pop-dark);
-    z-index: 1;
-    animation: jhenSpin 25s linear infinite;
-}
-.jhen-pop-pro .ring-1 { width: 115%; height: 115%; top: -7.5%; left: -7.5%; }
-.jhen-pop-pro .ring-2 { width: 130%; height: 130%; top: -15%; left: -15%; border-color: var(--pop-pink); animation-direction: reverse; }
-
-@keyframes jhenSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-/* --- Vibe Cards 專屬動態效果 --- */
-.jhen-pop-pro .jhen-vibe-section { padding: 120px 0; background: #fafafa; }
-.jhen-pop-pro .vibe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; }
-
-.jhen-pop-pro .vibe-card {
-    padding: 60px 40px;
-    background: #ffffff;
-    border: 4px solid var(--pop-dark);
-    border-radius: 25px;
-    position: relative;
-    top: 0; left: 0;
-    box-shadow: 10px 10px 0px var(--pop-dark);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-}
-
-.jhen-pop-pro .vibe-card:hover {
-    top: -15px;
-    left: -8px;
-    box-shadow: 20px 20px 0px var(--pop-pink);
-    border-color: var(--pop-pink);
-}
-
-.jhen-pop-pro .vibe-icon {
-    font-size: 4rem;
-    margin-bottom: 25px;
-    display: block;
-    transition: 0.4s;
-}
-
-.jhen-pop-pro .vibe-card:hover .vibe-icon { transform: scale(1.3) rotate(15deg); }
-.jhen-pop-pro .vibe-card h3 { font-size: 1.8rem; font-weight: 900; margin-bottom: 15px; }
-.jhen-pop-pro .vibe-card p { font-size: 1.05rem; line-height: 1.6; color: #444; }
-
-.jhen-pop-pro .vibe-card.color-B { background: var(--pop-blue); }
-.jhen-pop-pro .vibe-card.color-C { background: var(--pop-yellow); }
-.jhen-pop-pro .vibe-card.color-B:hover, .jhen-pop-pro .vibe-card.color-C:hover { box-shadow: 20px 20px 0px var(--pop-dark); }
-
-/* ============================================================
-   RWD 適配修正
-   ============================================================ */
-@media (max-width: 1200px) {
-    .jhen-pop-pro .jhen-content { min-width: 400px; }
-    .jhen-pop-pro .jhen-avatar-group { max-width: 420px; }
-    .jhen-pop-pro .jhen-big-name .zh { font-size: 3.8rem; }
-}
-
-@media (max-width: 992px) {
-    .jhen-pop-pro .jhen-hero { padding: 60px 0; }
-    .jhen-pop-pro .jhen-flex { flex-direction: column-reverse; text-align: center; }
-    .jhen-pop-pro .jhen-visual { min-width: auto; margin-bottom: 50px; }
-    .jhen-pop-pro .jhen-avatar-group { max-width: 380px; }
-    .jhen-pop-pro .jhen-content { min-width: 100%; }
-    .jhen-pop-pro .vibe-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 992px) {
-    /* 在平板與手機版，將名字容器改為居中 */
-    .jhen-pop-pro .jhen-name-wrapper {
-        align-items: center; 
-        text-align: center;
+/* ==========================================
+   [1] 電腦版排版 (Desktop 1025px+)
+   ========================================== */
+@media (min-width: 1025px) {
+    .jhen-main-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: center;
+        padding: 160px 0;
     }
 
-    .jhen-pop-pro .jhen-big-name {
-        text-align: center; /* 確保中英文文字皆置中 */
+    /* 名字加大區 */
+    .jhen-title-cn { font-size: 2.5rem; letter-spacing: 20px; font-weight: 700; margin-bottom: 15px; }
+    .jhen-title-en { font-size: 26px; letter-spacing: 28px; font-weight: 900; margin-bottom: 35px; color: #c5a059; }
+
+    /* 宣言區加大間距 (著重化妝主題文字) */
+    .jhen-manifesto { margin: 100px 0; }
+    .jhen-h1 { font-size: 6rem; line-height: 1; letter-spacing: -3px; font-weight: 900; margin-bottom: 40px; }
+    .italic-text { font-size: 5rem; font-style: italic; font-weight: 300; display: block; margin-top: 20px; }
+    
+    .jhen-p { font-size: 1.2rem; line-height: 2.5; max-width: 580px; color: #555; letter-spacing: 1.5px; }
+
+    /* 卡片橫向 */
+    .vibe-editorial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+        padding-top: 150px;
+        border-top: 1px solid #eee;
     }
 
-    /* 調整標籤的動畫基準點，確保旋轉時視覺穩定 */
-    .jhen-pop-pro .jhen-vibe-tag {
-        margin-left: auto;
-        margin-right: auto;
+    /* 卡片懸浮效果 */
+    .vibe-item:hover {
+        transform: translateY(-20px);
+        box-shadow: 0 30px 60px rgba(197, 160, 89, 0.08); /* 帶點微金的陰影 */
+        background: #fff;
     }
 }
 
-@media (max-width: 768px) {
-    /* 針對手機版進一步優化字級，避免字體過大導致溢出 */
-    .jhen-pop-pro .jhen-big-name .zh { font-size: 3.2rem; }
-    .jhen-pop-pro .jhen-big-name .en { font-size: 2rem; }
+/* ==========================================
+   [2] 平板版排版 (Tablet 768px-1024px)
+   ========================================== */
+@media (max-width: 1024px) {
+    .jhen-main-grid { display: block; text-align: center; padding: 100px 0; }
+    .jhen-brand-content { margin: 0 auto; }
+    .jhen-slogan-row { justify-content: center; }
+
+    .jhen-title-cn { font-size: 2rem; letter-spacing: 15px; }
+    .jhen-title-en { font-size: 20px; letter-spacing: 18px; }
+
+    .jhen-manifesto { margin: 60px 0; }
+    .jhen-h1 { font-size: 4.5rem; }
+    .italic-text { font-size: 3.5rem; }
+
+    .image-reveal-wrapper { margin-top: 80px; max-width: 550px; margin-left: auto; margin-right: auto; }
+    
+    .vibe-editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 }
 
-@media (max-width: 768px) {
-    .jhen-pop-pro .jhen-big-name .zh { font-size: 3rem; }
-    .jhen-pop-pro .jhen-big-name .en { font-size: 2rem; }
-    .jhen-pop-pro .jhen-h1 { font-size: 2.5rem; }
-    .jhen-pop-pro .vibe-grid { grid-template-columns: 1fr; }
+/* ==========================================
+   [3] 手機版排版 (Mobile 767px 以下)
+   ========================================== */
+@media (max-width: 767px) {
+    .jhen-container { padding: 0 25px; }
+    .jhen-title-cn { font-size: 1.6rem; letter-spacing: 10px; }
+    .jhen-title-en { font-size: 16px; letter-spacing: 12px; }
+    .jhen-h1 { font-size: 3rem; }
+    .italic-text { font-size: 2.5rem; }
+    .jhen-p { font-size: 1.05rem; line-height: 2.2; }
+    .vibe-editorial-grid { grid-template-columns: 1fr; }
+    .vibe-item { padding: 30px 0; border-bottom: 1px solid #f0f0f0; }
 }
+
+/* ==========================================
+   [4] 通用視覺元件
+   ========================================== */
+.jhen-identity { margin-bottom: 50px; }
+.jhen-slogan-row { display: flex; align-items: center; gap: 20px; }
+.gold-separator { width: 50px; height: 1px; background: #c5a059; }
+.jhen-title-zh { font-size: 16px; letter-spacing: 8px; color: #c5a059; font-weight: 300; }
+
+/* 按鈕效果 */
+.vogue-btn { text-decoration: none; color: #111; display: inline-flex; flex-direction: column; gap: 12px; }
+.btn-txt { font-size: 11px; letter-spacing: 8px; font-weight: 700; transition: 0.4s; }
+.btn-line { width: 60px; height: 1px; background: #111; transition: 0.6s; }
+.vogue-btn:hover .btn-line { width: 180px; background: #c5a059; }
+
+/* 照片與裝飾 */
+.image-reveal-wrapper { position: relative; }
+.jhen-photo-mask { position: relative; z-index: 3; overflow: hidden; box-shadow: 40px 40px 0 #f9f9f9; }
+.jhen-img { width: 100%; object-fit: cover; object-position: center 10% !important; transition: 1.5s ease; }
+.bg-watermark { position: absolute; top: -50px; right: -20px; font-size: 15vw; color: #f8f8f8; font-weight: 900; z-index: 1; pointer-events: none; }
+.accent-frame { position: absolute; top: -30px; left: 10px; width: 100%; height: 100%; border: 1px solid #eee; z-index: 2; }
+.vertical-status { position: absolute; right: -35px; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; font-size: 10px; letter-spacing: 5px; color: #c5a059; font-weight: 700; }
+
+/* 卡片基礎樣式 */
+.vibe-item { padding: 40px; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: default; }
+.vibe-index { font-size: 12px; color: #c5a059; font-weight: 700; margin-bottom: 20px; display: block; }
+.vibe-body h4 { font-size: 1.6rem; margin-bottom: 15px; transition: 0.3s; }
+.vibe-body p { font-size: 14px; color: #666; font-weight: 300; line-height: 1.8; }
+.vibe-item:hover h4 { color: #c5a059; }
 
 
 
