@@ -1254,329 +1254,315 @@
 
 
 
-/* ============================================================
-   Ben - 陽光專業清新版 (精確對齊修正)
-   ============================================================ */
+/* --- Ben Executive Style 2026 --- */
 
-/* --- 核心變數與基礎 --- */
-.ben-glass-pro {
-    --primary-orange: #ff8c42;
-    --deep-navy: #0f172a;
-    --soft-text: #475569;
-    --warm-bg: #fffcf9;
-    background-color: var(--warm-bg);
-    font-family: 'Noto Sans TC', sans-serif;
-    color: var(--deep-navy);
+:root {
+    --ben-accent: #c1a37f; /* 橡木金色 */
+    --ben-dark: #1a1a1a;
+    --ben-grey: #666;
+    --ben-white: #ffffff;
+    --ben-line: #eeeeee;
 }
 
-.ben-glass-pro .ben-wrapper { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 40px; 
+.ben-executive-white {
+    background-color: var(--ben-white);
+    color: var(--ben-dark);
+    font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+    margin: 0;
 }
 
-/* --- 電腦版佈局 --- */
-.ben-hero-section { padding: 100px 0; }
-.ben-hero-layout { display: flex; align-items: center; gap: 80px; }
-.ben-hero-visual { flex: 1; }
-.ben-hero-text { flex: 1.2; text-align: left; }
-
-.ben-portrait-img {
-    width: 100%; height: auto; border-radius: 20px;
-    box-shadow: 20px 20px 0px var(--primary-orange);
+.ben-container-lg {
+    max-width: 1400px; /* 拉寬容器 */
+    margin: 0 auto;
+    padding: 0 50px;
 }
 
-/* 文字層次 */
-.ben-name-cn { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin: 0; }
-.ben-name-en { font-size: 2rem; font-weight: 300; color: var(--primary-orange); letter-spacing: 5px; margin-bottom: 25px; }
-.ben-slogan-wrap { font-size: 2.2rem; font-weight: 800; line-height: 1.4; margin: 30px 0; }
-.ben-orange-text { color: var(--primary-orange); }
-
-.ben-desc-new { font-size: 1.1rem; line-height: 2; color: var(--soft-text); text-align: justify; margin-bottom: 40px; }
-
-/* 卡片佈局 (電腦版三欄) */
-.ben-grid-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.ben-card-new { background: #fff; padding: 40px 30px; border-radius: 15px; border: 1px solid #eee; position: relative; }
-
-/* --- 圖片裝飾 (電腦版) --- */
-.ben-portrait-container {
-    position: relative;
-    width: 100%;
-    max-width: 450px;
+/* ==========================================
+   Hero 區域：文字放大與排版優化
+   ========================================== */
+.ben-main-hero {
+    padding: 120px 0;
+    overflow: hidden;
 }
 
-.ben-portrait-img {
-    width: 100%;
-    height: auto;
-    border-radius: 24px;
-    z-index: 2;
-    position: relative;
-    box-shadow: 20px 20px 0px var(--primary-orange);
-}
-
-.ben-deco-box {
-    position: absolute;
-    top: -20px; left: -20px;
-    width: 120px; height: 120px;
-    background: repeating-linear-gradient(45deg, #e5e7eb, #e5e7eb 2px, transparent 2px, transparent 10px);
-    z-index: 1;
-}
-
-/* --- 圖片樣式 --- */
-.ben-hero-visual { 
-    flex: 0.8; 
-}
-
-.ben-portrait-container {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-}
-
-.ben-hero-text { 
-    flex: 1.2; text-align: left; 
-}
-
-.ben-portrait-img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 20px 20px 0px var(--primary-orange);
-}
-
-.ben-portrait-container:hover .ben-portrait-img {
-    transform: scale(1.03);
-    filter: grayscale(0%);
-    box-shadow: 25px 25px 0px var(--primary-orange);
-}
-
-.ben-deco-box {
-    position: absolute;
-    top: -20px; left: -20px;
-    width: 100px; height: 100px;
-    background: repeating-linear-gradient(45deg, #eee, #eee 2px, transparent 2px, transparent 8px);
-    z-index: 1;
-}
-
-/* --- 文字區樣式 --- */
-.ben-hero-text {
-    flex: 1.2;
-    text-align: left;
-}
-
-.ben-badge-new {
-    color: var(--primary-orange);
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-}
-
-.ben-title-group {
-    margin-bottom: 20px;
-}
-
-.ben-name-cn { 
-    font-size: 5rem; 
-    font-weight: 900; 
-    line-height: 1; 
-    margin: 0; 
-    text-align: left;
-}
-
-.ben-name-en { 
-    font-size: 2.2rem; 
-    font-weight: 300; 
-    color: var(--primary-orange); 
-    letter-spacing: 4px; 
-    display: block; 
-    text-align: left;
-}
-
-.ben-slogan-wrap { 
-    font-size: 2.4rem; 
-    font-weight: 800; 
-    line-height: 1.3; 
-    margin: 30px 0; 
-}
-
-.ben-orange-text { 
-    color: var(--primary-orange); 
-}
-
-.ben-gradient-text {
-    color: var(--primary-orange);
-}
-
-.ben-desc-new {
-    font-size: 1.1rem;
-    line-height: 2;
-    color: var(--soft-text);
-    text-align: justify;
-    text-justify: inter-word;
-    word-break: break-all;
-    max-width: 550px;
-}
-
-.ben-button-new {
-    display: inline-block;
-    padding: 20px 40px;
-    background: var(--deep-navy);
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: 700;
-    transition: 0.3s ease;
-}
-
-.ben-button-new:hover { background: var(--primary-orange); 
-    transform: translateY(-3px); 
-}
-
-/* --- 卡片區塊 --- */
-.ben-service-section { 
-    padding: 60px 0 100px; 
-}
-
-.ben-grid-new {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 電腦版三欄 */
-    gap: 30px;
-    align-items: stretch;
-}
-
-.ben-card-new {
-    position: relative;
-    background: #ffffff;
-    padding: 50px 35px;
-    border-radius: 15px;
-    border: 1px solid #eee;
+.ben-hero-layout {
     display: flex;
-    flex-direction: column;
-    transition: 0.4s;
+    align-items: center;
+    gap: 100px;
 }
 
-.ben-card-body { flex-grow: 1; }
+.ben-photo-area {
+    flex: 0 0 45%;
+}
 
-.ben-card-body p {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--soft-text);
+.ben-img-wrapper {
+    position: relative;
+    box-shadow: 40px 40px 0 #f8f8f8; /* 背景陰影塊 */
+}
+
+.ben-portrait-main {
+    width: 100%;
+    display: block;
+    filter: brightness(1.02) contrast(1.05); /* 飽和吉利的原色 */
+}
+
+.ben-gold-frame {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    border-top: 4px solid var(--ben-accent);
+    border-left: 4px solid var(--ben-accent);
+}
+
+/* 文字部分加大尺寸 */
+.ben-meta-tag {
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--ben-accent);
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.ben-title-box {
+    margin-bottom: 50px;
+}
+
+.ben-name-zh {
+    font-size: 3.2rem; /* 中文名字放大 */
+    font-weight: 900;
+    letter-spacing: 15px;
+    margin: 0;
+}
+
+.ben-name-en {
+    font-size: 1.2rem;
+    letter-spacing: 8px;
+    color: #bbb;
+    font-weight: 400;
+}
+
+.ben-h2 {
+    font-size: 2.8rem; /* 標題文字加大 */
+    line-height: 1.4;
+    font-weight: 800;
+    margin-bottom: 35px;
+}
+
+.accent-color { color: var(--ben-accent); }
+
+.ben-p {
+    font-size: 1.25rem; /* 內文稍微加大更易讀 */
+    line-height: 2.2;
+    color: #555;
+    max-width: 550px;
     text-align: justify;
 }
 
-.ben-card-header h3 { 
-    font-size: 1.5rem; 
-    font-weight: 800; 
-    margin-bottom: 20px; 
-}
-
-.ben-card-border {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    border: 2px solid var(--primary-orange);
-    border-radius: 15px;
-    opacity: 0;
+.ben-cta-btn {
+    display: inline-block;
+    padding: 20px 45px;
+    background: var(--ben-dark);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-top: 50px;
     transition: 0.3s;
 }
 
-.ben-card-new:hover {
+.ben-cta-btn:hover {
+    background: var(--ben-accent);
+    transform: translateY(-5px);
+}
+
+/* ==========================================
+   卡片區域：更寬、更有分量
+   ========================================== */
+.ben-logic-section {
+    padding-bottom: 150px;
+}
+
+.ben-card-grid {
+    display: flex;
+    border-top: 1px solid var(--ben-line);
+}
+
+.ben-logic-card {
+    flex: 1;
+    padding: 100px 50px; /* 增加內距，讓卡片看起來更大 */
+    border-right: 1px solid var(--ben-line);
+    transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ben-logic-card:last-child { border-right: none; }
+
+.card-idx {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--ben-accent);
+    display: block;
+    margin-bottom: 30px;
+}
+
+.ben-logic-card h3 {
+    font-size: 2rem; /* 卡片標題加大 */
+    margin-bottom: 25px;
+    font-weight: 800;
+}
+
+.ben-logic-card p {
+    font-size: 1.15rem; /* 卡片內文加大 */
+    color: #777;
+    line-height: 2;
+}
+
+/* 效果：Hover 時背景微微變色 */
+.ben-logic-card:hover {
+    background: #fdfaf6;
     transform: translateY(-10px);
 }
 
-.ben-card-new:hover .ben-card-border { opacity: 1; }
-
-/* --- 按鈕 --- */
-.ben-button-new {
-    display: inline-block;
-    padding: 18px 35px;
-    background: var(--deep-navy);
-    color: #fff;
-    border-radius: 10px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: 0.3s;
+.ben-logic-card.active {
+    background: #fafafa;
 }
 
-.ben-button-new:hover { background: var(--primary-orange); }
-
-/* --- RWD 響應式 --- */
+/* ==========================================
+   RWD 適配
+   ========================================== */
+@media (max-width: 1200px) {
+    .ben-name-zh { font-size: 2.8rem; }
+    .ben-h2 { font-size: 2.2rem; }
+    .ben-hero-layout { gap: 60px; }
+}
 
 @media (max-width: 1024px) {
-    .ben-hero-layout { gap: 40px; }
-    .ben-name-cn { font-size: 3.5rem; }
-    .ben-slogan-wrap { font-size: 2rem; }
+    .ben-hero-layout { flex-direction: column; text-align: center; }
+    .ben-photo-area { width: 70%; }
+    .ben-p { margin: 0 auto; }
+    .ben-card-grid { flex-direction: column; }
+    .ben-logic-card { border-right: none; border-bottom: 1px solid var(--ben-line); padding: 70px 40px; }
 }
 
-@media (max-width: 992px) {
-    .ben-hero-layout {
-        flex-direction: column; /* 圖片在上，文字在下 */
-        text-align: center;
-    }
-    .ben-hero-text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .ben-desc-new { margin: 0 auto 40px; }
-    
-    .ben-grid-new {
-        grid-template-columns: repeat(2, 1fr); /* 平板改兩欄 */
-    }
-}
-
-/* 核心修正：針對手機版卡片窄長的問題 */
 @media (max-width: 768px) {
-    .ben-wrapper { padding: 0 25px; }
-    
-    .ben-hero-layout {
-        flex-direction: column; /* 圖片在上，文字在下 */
-        gap: 40px;
-    }
-
-    .ben-hero-visual {
-        width: 100%;
-        max-width: 300px; /* 限制手機版頭像大小 */
-        margin: 0 auto;
-    }
-
-    .ben-hero-text {
-        text-align: center; /* 全體置中核心指令 */
-        width: 100%;
-    }
-
-    /* 針對你要求的四個項目的手機置中樣式 */
-    .ben-name-cn { 
-        font-size: 3rem; 
-        text-align: center; 
-    }
-    .ben-name-en { 
-        font-size: 1.5rem; 
-        text-align: center; 
-        margin-bottom: 20px;
-    }
-    .ben-slogan-wrap { 
-        font-size: 1.8rem; 
-        text-align: center; /* 這裡控制了「透過深度面談」與「釐清核心」置中 */
-        margin: 20px 0;
-    }
-
-    .ben-desc-new {
-        text-align: center; /* 描述文字在手機上也建議置中或兩端對齊 */
-        font-size: 1rem;
-    }
-
-    /* 解決卡片窄長問題：手機版改為單欄 */
-    .ben-grid-new {
-        grid-template-columns: 1fr; 
-    }
-
-    .ben-button-new {
-        width: 100%;
-        text-align: center;
-    }
+    .ben-container-lg { padding: 0 30px; }
+    .ben-name-zh { font-size: 2.2rem; letter-spacing: 8px; }
+    .ben-h2 { font-size: 1.8rem; }
+    .ben-photo-area { width: 100%; }
 }
 
+.ben-footer {
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--ben-line);
+    color: #999;
+    font-size: 13px;
+}
+
+/* ==========================================
+   圖片專屬：高級感特效 (不黑白，強調透亮)
+   ========================================== */
+
+.ben-parallax-wrapper {
+    position: relative;
+    padding: 30px;
+    z-index: 1;
+}
+
+/* 1. 照片本體：提亮並增加暖色調 */
+.ben-img-frame {
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 20px 40px 80px rgba(0,0,0,0.1);
+}
+
+.ben-portrait-main {
+    width: 100%;
+    display: block;
+    filter: brightness(1.05) contrast(1.02); /* 讓氣色更好 */
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 2. 玻璃掃光效果：每 5 秒自動閃過一道優雅的光芒 */
+.ben-glass-shine {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(
+        to right, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 6;
+    animation: shineSweep 6s infinite ease-in-out;
+}
+
+@keyframes shineSweep {
+    0% { left: -100%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* 3. 背景結構塊：模擬建築牆面 */
+.ben-bg-layer {
+    position: absolute;
+    top: 60px; right: -20px;
+    width: 100%; height: 100%;
+    background: #f8f8f8;
+    z-index: 0;
+    transition: 0.5s;
+}
+
+/* 4. 懸浮金框：模擬藝廊裝飾 */
+.ben-floating-border {
+    position: absolute;
+    top: 10px; left: 10px;
+    width: 100%; height: 100%;
+    border: 1px solid var(--ben-accent);
+    z-index: 7;
+    pointer-events: none;
+    transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 5. 互動效果：滑鼠移入時，邊框與照片產生位移差 */
+.ben-parallax-wrapper:hover .ben-portrait-main {
+    transform: scale(1.05);
+}
+
+.ben-parallax-wrapper:hover .ben-floating-border {
+    transform: translate(-15px, -15px);
+    border-width: 2px;
+}
+
+.ben-parallax-wrapper:hover .ben-bg-layer {
+    transform: translate(15px, 15px);
+    background: #f2ede6; /* 變為溫暖的木質底色 */
+}
+
+/* 側邊直寫文字標籤 */
+.ben-experience-tag {
+    position: absolute;
+    bottom: 50px;
+    left: -20px;
+    writing-mode: vertical-rl;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--ben-accent);
+    font-weight: 800;
+    z-index: 8;
+}
+
+/* 手機版隱藏複雜裝飾，確保載入速度 */
+@media (max-width: 768px) {
+    .ben-bg-layer, .ben-floating-border { display: none; }
+    .ben-parallax-wrapper { padding: 0; }
+}
 
 
 
@@ -2045,125 +2031,174 @@
    Jhen - 活力創意行銷最終版 (修正圖片大小與佈局版)
    ============================================================ */
 
-/* --- Jhen Editorial Final All-in-One --- */
+/* --- Jhen Personal Brand Master CSS --- */
 
 .jhen-pop-pro {
     background: #ffffff !important;
-    color: #111111;
+    color: #111;
     font-family: "Georgia", "PingFang TC", serif;
-    overflow: hidden;
-    position: relative;
+    overflow: visible; 
     padding-bottom: 120px;
 }
 
 .jhen-container {
-    max-width: 1400px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 6%;
 }
 
 /* ==========================================
-   [1] 電腦版排版 (Desktop 1025px+)
+   電腦版 (1025px+) 排版優化
    ========================================== */
 @media (min-width: 1025px) {
     .jhen-main-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 80px;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        padding: 160px 0;
+        padding: 140px 0 200px 0;
+        position: relative;
     }
 
-    /* 名字加大區 */
-    .jhen-title-cn { font-size: 2.5rem; letter-spacing: 20px; font-weight: 700; margin-bottom: 15px; }
-    .jhen-title-en { font-size: 26px; letter-spacing: 28px; font-weight: 900; margin-bottom: 35px; color: #c5a059; }
+    /* 文字區塊：確保寬度足夠且不被壓縮 */
+    .jhen-info-box { 
+        flex: 0 0 48%; 
+        z-index: 10; 
+        padding-right: 40px;
+    }
 
-    /* 宣言區加大間距 (著重化妝主題文字) */
+    /* 影像區塊 */
+    .jhen-visual-box { 
+        flex: 0 0 45%; 
+        position: relative; 
+    }
+
+    /* 1. 名字加大 */
+    .jhen-title-cn { font-size: 3.5rem; letter-spacing: 22px; font-weight: 700; margin-bottom: 15px; }
+    .jhen-title-en { font-size: 1.8rem; letter-spacing: 28px; color: #c5a059; font-weight: 900; margin-bottom: 60px; }
+
+    /* 2. 創意點火間距加寬 */
     .jhen-manifesto { margin: 100px 0; }
-    .jhen-h1 { font-size: 6rem; line-height: 1; letter-spacing: -3px; font-weight: 900; margin-bottom: 40px; }
+    .jhen-h1 { font-size: 5.8rem; line-height: 1.1; font-weight: 900; letter-spacing: -2px; }
     .italic-text { font-size: 5rem; font-style: italic; font-weight: 300; display: block; margin-top: 20px; }
-    
-    .jhen-p { font-size: 1.2rem; line-height: 2.5; max-width: 580px; color: #555; letter-spacing: 1.5px; }
+    .jhen-p { font-size: 1.3rem; line-height: 2.5; margin-top: 50px; color: #444; text-align: justify; }
 
-    /* 卡片橫向 */
+    /* 3. 卡片效果與尺寸放大 */
     .vibe-editorial-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 50px;
-        padding-top: 150px;
+        gap: 80px; 
+        padding: 120px 0;
         border-top: 1px solid #eee;
     }
 
-    /* 卡片懸浮效果 */
+    .vibe-item { 
+        padding: 40px 20px; 
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        background: transparent;
+    }
+
     .vibe-item:hover {
         transform: translateY(-20px);
-        box-shadow: 0 30px 60px rgba(197, 160, 89, 0.08); /* 帶點微金的陰影 */
         background: #fff;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+    }
+
+    .vibe-body h4 { 
+        font-size: 2.4rem; 
+        margin-bottom: 25px; 
+        font-weight: 700;
+        transition: color 0.3s;
+    }
+    .vibe-item:hover h4 { color: #c5a059; }
+
+    .vibe-body p { font-size: 1.2rem; line-height: 2; color: #555; }
+    .vibe-index { font-size: 1.2rem; font-weight: 700; color: #c5a059; margin-bottom: 30px; display: block; }
+
+    /* 巨大背景字 JHEN */
+    .bg-watermark {
+        position: absolute;
+        top: -20%;
+        left: -45%;
+        font-size: 32vw; 
+        font-family: "serif";
+        font-weight: 900;
+        color: rgba(0,0,0,0.025);
+        z-index: 0;
+        pointer-events: none;
+        letter-spacing: -15px;
     }
 }
 
 /* ==========================================
-   [2] 平板版排版 (Tablet 768px-1024px)
+   圖片效果優化
+   ========================================== */
+.image-reveal-wrapper { position: relative; z-index: 5; }
+
+.jhen-photo-mask { 
+    position: relative; 
+    z-index: 2; 
+    overflow: hidden; /* 確保縮放不溢出 */
+    box-shadow: 40px 40px 0 #f9f9f9; 
+}
+
+.jhen-img { 
+    width: 100%; 
+    display: block; 
+    aspect-ratio: 3.5/5; 
+    object-fit: cover; 
+    transition: 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 圖片互動效果 */
+.jhen-photo-mask:hover .jhen-img {
+    transform: scale(1.08);
+}
+
+.accent-frame {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: 30px;
+    bottom: 30px;
+    border: 1px solid #f0f0f0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vertical-status {
+    position: absolute;
+    right: -65px;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-size: 12px;
+    letter-spacing: 8px;
+    color: #c5a059;
+    font-weight: 700;
+}
+
+/* ==========================================
+   按鈕特效
+   ========================================== */
+.vogue-btn { text-decoration: none; color: #111; display: inline-flex; flex-direction: column; gap: 15px; }
+.btn-txt { font-size: 12px; letter-spacing: 10px; font-weight: 700; transition: 0.4s; }
+.btn-line { width: 70px; height: 1px; background: #111; transition: 0.6s; }
+.vogue-btn:hover .btn-line { width: 220px; background: #c5a059; }
+.vogue-btn:hover .btn-txt { color: #c5a059; }
+
+/* ==========================================
+   RWD (平板與手機)
    ========================================== */
 @media (max-width: 1024px) {
-    .jhen-main-grid { display: block; text-align: center; padding: 100px 0; }
-    .jhen-brand-content { margin: 0 auto; }
-    .jhen-slogan-row { justify-content: center; }
-
-    .jhen-title-cn { font-size: 2rem; letter-spacing: 15px; }
-    .jhen-title-en { font-size: 20px; letter-spacing: 18px; }
-
-    .jhen-manifesto { margin: 60px 0; }
-    .jhen-h1 { font-size: 4.5rem; }
-    .italic-text { font-size: 3.5rem; }
-
-    .image-reveal-wrapper { margin-top: 80px; max-width: 550px; margin-left: auto; margin-right: auto; }
-    
-    .vibe-editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .bg-watermark { display: none; }
+    .jhen-main-grid { display: block; text-align: center; padding: 60px 0; }
+    .jhen-info-box { padding-right: 0; margin-bottom: 60px; }
+    .jhen-title-cn { font-size: 2.2rem; letter-spacing: 15px; }
+    .jhen-h1 { font-size: 4rem; }
+    .italic-text { font-size: 3rem; }
+    .image-reveal-wrapper { max-width: 500px; margin: 0 auto; }
+    .vibe-editorial-grid { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
 }
-
-/* ==========================================
-   [3] 手機版排版 (Mobile 767px 以下)
-   ========================================== */
-@media (max-width: 767px) {
-    .jhen-container { padding: 0 25px; }
-    .jhen-title-cn { font-size: 1.6rem; letter-spacing: 10px; }
-    .jhen-title-en { font-size: 16px; letter-spacing: 12px; }
-    .jhen-h1 { font-size: 3rem; }
-    .italic-text { font-size: 2.5rem; }
-    .jhen-p { font-size: 1.05rem; line-height: 2.2; }
-    .vibe-editorial-grid { grid-template-columns: 1fr; }
-    .vibe-item { padding: 30px 0; border-bottom: 1px solid #f0f0f0; }
-}
-
-/* ==========================================
-   [4] 通用視覺元件
-   ========================================== */
-.jhen-identity { margin-bottom: 50px; }
-.jhen-slogan-row { display: flex; align-items: center; gap: 20px; }
-.gold-separator { width: 50px; height: 1px; background: #c5a059; }
-.jhen-title-zh { font-size: 16px; letter-spacing: 8px; color: #c5a059; font-weight: 300; }
-
-/* 按鈕效果 */
-.vogue-btn { text-decoration: none; color: #111; display: inline-flex; flex-direction: column; gap: 12px; }
-.btn-txt { font-size: 11px; letter-spacing: 8px; font-weight: 700; transition: 0.4s; }
-.btn-line { width: 60px; height: 1px; background: #111; transition: 0.6s; }
-.vogue-btn:hover .btn-line { width: 180px; background: #c5a059; }
-
-/* 照片與裝飾 */
-.image-reveal-wrapper { position: relative; }
-.jhen-photo-mask { position: relative; z-index: 3; overflow: hidden; box-shadow: 40px 40px 0 #f9f9f9; }
-.jhen-img { width: 100%; object-fit: cover; object-position: center 10% !important; transition: 1.5s ease; }
-.bg-watermark { position: absolute; top: -50px; right: -20px; font-size: 15vw; color: #f8f8f8; font-weight: 900; z-index: 1; pointer-events: none; }
-.accent-frame { position: absolute; top: -30px; left: 10px; width: 100%; height: 100%; border: 1px solid #eee; z-index: 2; }
-.vertical-status { position: absolute; right: -35px; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; font-size: 10px; letter-spacing: 5px; color: #c5a059; font-weight: 700; }
-
-/* 卡片基礎樣式 */
-.vibe-item { padding: 40px; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: default; }
-.vibe-index { font-size: 12px; color: #c5a059; font-weight: 700; margin-bottom: 20px; display: block; }
-.vibe-body h4 { font-size: 1.6rem; margin-bottom: 15px; transition: 0.3s; }
-.vibe-body p { font-size: 14px; color: #666; font-weight: 300; line-height: 1.8; }
-.vibe-item:hover h4 { color: #c5a059; }
 
 
 
